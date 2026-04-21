@@ -1,0 +1,53 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "android/app/src/main/assets/img/gearImages/helmet/bumblehelm/bumblehelm_common.jpg",
+      "sha1": "e88f8fc05796de6b7699252b5ea3a4afe7ffc5c5"
+    },
+    {
+      "path": "android/app/src/main/assets/img/gearImages/helmet/bumblehelm/bumblehelm_epic.jpg",
+      "sha1": "11d15651f23acc0f756b4ef884ae088c1b12d2e5"
+    },
+    {
+      "path": "android/app/src/main/assets/img/gearImages/helmet/bumblehelm/bumblehelm_legendary.jpg",
+      "sha1": "874b023269863539ea2b3ec9d2531cf06049c2b6"
+    },
+    {
+      "path": "android/app/src/main/assets/img/gearImages/helmet/bumblehelm/bumblehelm_mythic.jpg",
+      "sha1": "de64bc3851db961c68c3a73c2fae7ad109d8b916"
+    },
+    {
+      "path": "android/app/src/main/assets/img/gearImages/helmet/bumblehelm/bumblehelm_rare.jpg",
+      "sha1": "5e188d5c20d10c6a312084b3cd56bd3544e1d491"
+    },
+    {
+      "path": "android/app/src/main/assets/img/gearImages/helmet/bumblehelm/bumblehelm_uncommon.jpg",
+      "sha1": "6354bcd573b1275d0f8c00b316f87edd4b1820ab"
+    },
+    {
+      "path": "android/app/src/main/assets/img/Icons/calculator.png",
+      "sha1": "0552cb084c5e1389ff0ba3dad059bde3f94a97ba"
+    },
+    {
+      "path": "android/app/src/main/assets/img/Icons/gear.png",
+      "sha1": "ca2d98a7dc671568b17e6c80527c0c585bb75513"
+    },
+    {
+      "path": "android/app/src/main/assets/img/Icons/home.png",
+      "sha1": "73a2ef8dda7ba1c76a67fc6281622e352d6e80af"
+    },
+    {
+      "path": "android/app/src/main/assets/img/Icons/plus.png",
+      "sha1": "bc53ddcf3553d10c2bef445943c71a0e10e9ac31"
+    },
+    {
+      "path": "android/app/src/main/assets/img/utills/No-Image-Placeholder.jpg",
+      "sha1": "e63c30162743752c38f48bc439685b1bee5b0912"
+    },
+    {
+      "path": "android/app/src/main/assets/img/utills/pagesBackgroundImg.jpg",
+      "sha1": "086132f8a05dd8a533a9322b71ae40f1525e42f0"
+    }
+  ]
+}
