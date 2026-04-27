@@ -15,7 +15,8 @@ import { calculatePieceAndJewelsStats, calculateTempernesStatsByLevel } from "..
 import ImageInWrapper from "../../../../../Components/ImageInWrapper/ImageInWrapper"
 import NumericInput from "../../../../../Components/NumericInput/NumericInput"
 import { tempernessLevelsNumber } from "../../../../../utills/consts"
-import SubmitButton from "../../../../../Components/SubmitButton/SubmitButton"
+import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedButton"
+import { colors } from "../../../../../utills/sharedStyles.styles"
 
 type Props = {
     pieceType: pieceTypes,
@@ -231,7 +232,7 @@ function PieceInfo({pieceType, gearSetSelected, isOuterModalVisible, setInnerMod
                                 setParentElementState = {setTempernessLevel}/>
                             
                             <View style = {piece_info.temper_submit_button}>
-                                <SubmitButton title = "Set" onPress = {onTempernessLevelSelection}/>
+                                <ElevatedButton title = "Set" onPress = {onTempernessLevelSelection} colors = {[colors.bgPrimary, colors.surfaceRaised]}/>
                             </View>
                         </View> :
                     

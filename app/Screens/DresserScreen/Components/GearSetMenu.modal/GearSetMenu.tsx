@@ -1,9 +1,10 @@
 import React from "react"
 import { Alert, View } from "react-native";
-import SubmitButton from "../../../../../Components/SubmitButton/SubmitButton";
+import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedButton";
 import { createGearSet, deleteGearSetById, getDBConnection } from "../../../../../utills/functions/db-service";
 import gear_set_menu from "./GearSetMenu.styles";
 import { gearSet} from "../../../../../utills/types";
+import { colors } from "../../../../../utills/sharedStyles.styles";
 
 type Props = {
     gearSet: gearSet,
@@ -54,11 +55,11 @@ function GearSetMenu({gearSet, allGearSets, changeGearSetsCount}: Props): React.
             <View style = {gear_set_menu.buttons_wrapper}>
 
                 <View style = {gear_set_menu.button_wrapper}>
-                    <SubmitButton title = "Add new gear set" onPress = {() => {onCreateGearSet()}}/>
+                    <ElevatedButton title = "Add new gear set" onPress = {() => {onCreateGearSet()}} colors = {[colors.bgPrimary, colors.surfaceRaised]}/>
                 </View>
 
                 <View style = {gear_set_menu.button_wrapper}>
-                    <SubmitButton title = "Delete current gear set" onPress = {() => {onDeleteGearSet()}}/>
+                    <ElevatedButton title = "Delete current gear set" onPress = {() => {onDeleteGearSet()}} colors = {[colors.bgPrimary, colors.surfaceRaised]}/>
                 </View>
                 
             </View>

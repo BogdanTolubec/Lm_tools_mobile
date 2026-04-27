@@ -12,7 +12,6 @@ import { gearSetPlaceHolder } from "../../../../utills/consts";
 import GearSetTitleChangeComponent from "../Components/GearSetTitleChange.modal/GearSetTitleChangeComponent";
 import PieceInfo from "../Components/PieceInfo.modal/PieceInfo";
 import GearSetStatsList from "../Components/GearSetStatsList.modal/GearSetStatsList";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 function DresserScreen(): React.JSX.Element{
 

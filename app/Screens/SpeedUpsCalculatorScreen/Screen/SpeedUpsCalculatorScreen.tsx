@@ -1,13 +1,14 @@
 import React, { useCallback, useState } from "react";
 import { ImageBackground, Text, View } from "react-native";
 import SpeedUpsCard from "../Components/SpeedUpsCard/SpeedUpsCard";
-import { ImgPathConsts } from "../../../../utills/enums";
+import { IconPathConsts, ImgPathConsts } from "../../../../utills/enums";
 import { maxItemsInBagValue, speedUpsValuesArray } from "../../../../utills/consts";
 import speed_ups_calculator_screen from "./SpeedUpsCalculatorScreen.styles";
 import { timeConverterFromSecondsToStringInDaysHoursMinutesFormat } from "../../../../utills/functions/userFriendlyVisualisation.functions";
-import shared_styles from "../../../../utills/sharedStyles.styles";
+import shared_styles, { iconSizes } from "../../../../utills/sharedStyles.styles";
 import { minutesToSeconds } from "../../../../utills/functions/timeConvertFunctions";
 import { FullHeightScrollView } from "../../../../Components/ScrollView/ScrollView";
+import { Icon } from "react-native-paper";
 
 function SpeedUpsCalculatorScreen(): React.JSX.Element{
 
@@ -32,34 +33,44 @@ function SpeedUpsCalculatorScreen(): React.JSX.Element{
     return(
             <View style = {speed_ups_calculator_screen.wrapper}>
                 <ImageBackground source = {{uri: ImgPathConsts.backgroundImage}} resizeMode = "cover" 
-                    style = {shared_styles.background_img}>
+                    style = {[shared_styles.background_img, {paddingTop: 10}]}>
                         
                     <View style = {speed_ups_calculator_screen.results_wrapper}>
-                        <Text style = {speed_ups_calculator_screen.result_text}> 
-                            Summary time: {
-                            timeConverterFromSecondsToStringInDaysHoursMinutesFormat(
-                                minutesToSeconds(itemCountsByCardArray.reduce((sum, count, index) => {
-                                return sum + count * speedUpsValuesArray[index];
-                                }, 0))
-                            )}
-                        </Text>
+                        <Icon size = {iconSizes.xxxl} source = {{uri: IconPathConsts.hourglassIcon}}/>
+
+                        <View>
+
+                            <Text style = {speed_ups_calculator_screen.summary_label_text}> 
+                                Total speedup time:
+                            </Text>
+
+                            <Text style = {speed_ups_calculator_screen.total_time_text}> 
+                                {
+                                    timeConverterFromSecondsToStringInDaysHoursMinutesFormat(
+                                        minutesToSeconds(itemCountsByCardArray.reduce((sum, count, index) => {
+                                        return sum + count * speedUpsValuesArray[index];
+                                        }, 0)
+                                    )
+                                )}
+                            </Text>
+
+                        </View>
                     </View>
 
-                <FullHeightScrollView scrollEnabled = {true} style = {{minWidth: "100%"}}>    
-                    <View style = {speed_ups_calculator_screen.inputs_wrapper}>
-                            {
-                                speedUpsValuesArray.map((speedUpValue, index) =>
-                                        <View key = {index} style = {speed_ups_calculator_screen.input_wrapper}>
-                                            <SpeedUpsCard itemsCount = {itemCountsByCardArray[index]}
-                                                indexInArray = {index}
-                                                speedUpValueInMinutes = {speedUpValue}
-                                                onCountChange = {onItemsCountChange}/>
-                                        </View>
-                                )
-                            }
-                    </View>
-
-                </FullHeightScrollView>
+                    <FullHeightScrollView>    
+                        <View style = {speed_ups_calculator_screen.inputs_wrapper}>
+                                {
+                                    speedUpsValuesArray.map((speedUpValue, index) =>
+                                            <View key = {index} style = {speed_ups_calculator_screen.input_wrapper}>
+                                                <SpeedUpsCard itemsCount = {itemCountsByCardArray[index]}
+                                                    indexInArray = {index}
+                                                    speedUpValueInMinutes = {speedUpValue}
+                                                    onCountChange = {onItemsCountChange}/>
+                                            </View>
+                                    )
+                                }
+                        </View>
+                    </FullHeightScrollView>
                     
                 </ImageBackground>
             </View>

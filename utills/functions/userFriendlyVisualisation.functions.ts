@@ -46,13 +46,34 @@ export function firstLetterCapitalizer(string: string): string{
 
 export function speedUpValueUserFriendlyVisualisation(timeInMinutes: number): string{
     if(timeInMinutes >= 0 && timeInMinutes <= 60)
-            return timeInMinutes + " m"
+        return timeInMinutes + " m"
 
     if(timeInMinutes > 60 && timeInMinutes <= minutesInDay)
-            return (timeInMinutes / minutesInHour).toFixed(2) + "h "
+        {
+            if(timeInMinutes % minutesInHour !== 0) return (timeInMinutes / minutesInHour).toFixed(2) + " h"
+            else return timeInMinutes / minutesInHour + " h"
+        }
+            
 
     if(timeInMinutes > minutesInDay && timeInMinutes <= minutesInDay * 3)
-            return (timeInMinutes / minutesInDay).toFixed(2) + " d"
+        {
+            if(timeInMinutes % minutesInDay !== 0) return (timeInMinutes / minutesInDay).toFixed(2) + " d"
+            else return timeInMinutes / minutesInDay + " d"
+        }
 
     return ""
+}
+
+export function numbersUpToTrillionReducer(value: number): string{
+    if(!value) return "0"
+    if(typeof(value) !== "number") return "0"
+    if(value < 0) return "0"
+
+    if(value < 1_000) return value.toFixed(0).toString()
+    if(value >= 1_000 && value < 1_000_000) return (value / 1_000).toFixed(1).toString() + "K"
+    if(value >= 1_000_000 && value < 1_000_000_000) return (value / 1_000_000).toFixed(1).toString() + "M"
+    if(value >= 1_000_000_000 && value < 1_000_000_000_000) return (value / 1_000_000_000).toFixed(1).toString() + "B"
+    if(value >= 1_000_000_000_000 && value < 1_000_000_000_000_000) return (value / 1_000_000_000_000).toFixed(1).toString() + "T"
+
+    return "Error"
 }

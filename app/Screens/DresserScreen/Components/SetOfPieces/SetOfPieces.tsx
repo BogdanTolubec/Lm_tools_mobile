@@ -8,8 +8,9 @@ import { gearSetPlaceHolder } from "../../../../../utills/consts";
 import PieceOfSet from "../Piece/Piece";
 import ImageInWrapper from "../../../../../Components/ImageInWrapper/ImageInWrapper";
 import JewelsInPiece from "../JewelsInPiece/JewelsInPiece";
-import SubmitButton from "../../../../../Components/SubmitButton/SubmitButton";
+import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedButton";
 import { getDBConnection, updateGearSet } from "../../../../../utills/functions/db-service";
+import { colors } from "../../../../../utills/sharedStyles.styles";
 
 type Props = {
     title: string | null,
@@ -114,7 +115,7 @@ function SetOfPieces ({gearSet, title, onPieceSelected, onMenuClicked, onTitleCl
                     </View>
 
                     <View style = {set_of_pieces.button_wrapper}>
-                        <SubmitButton title = "Save" onPress = {() => {onSaveChanges()}}/>
+                        <ElevatedButton title = "Save" onPress = {() => {onSaveChanges()}} colors = {[colors.bgPrimary, colors.surfaceRaised]}/>
                     </View>
 
                 </View>

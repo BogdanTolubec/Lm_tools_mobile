@@ -1,15 +1,53 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 
-export const textColors = {
-  primary: "#F2EBDD",
-  secondary: "#B7B0A3",
-  muted: "#8F887C",
-  gold: "#C8A96B",
-  blueAccent: "#89A8D8",
-  success: "#7FA36E",
-  danger: "#B56A6A",
-};
+export const colors = {
+    bgPrimary: '#08111F',
+    bgSecondary: '#0E1A2B',
+    surface: '#112033',
+    surfaceRaised: '#15263D',
+
+    gold: '#D7AE63',
+    goldBright: '#F0C97B',
+
+    violet: '#7D61C9',
+    violetSoft: '#5A4A8A',
+
+    textPrimary: '#F3F1EA',
+    textSecondary: '#B7BCC8',
+    textMuted: '#7F8797',
+
+    borderSoft: 'rgba(255,255,255,0.08)',
+    borderGold: 'rgba(215,174,99,0.55)',
+    borderViolet: 'rgba(125,97,201,0.8)',
+}
+
+export const radius = {
+    sm: 12,
+    md: 16,
+    lg: 22,
+    xl: 26,
+}
+
+export const  spacing = {
+    xxs: 2,
+    xs: 4,
+    sm: 8,
+    md: 12,
+    lg: 16,
+    xl: 20,
+    xxl: 24,
+}
+
+export const iconSizes = {
+    xs: 10,
+    sm: 15,
+    md: 20,
+    lg: 25,
+    xl: 30,
+    xxl: 40,
+    xxxl: 50,
+}
 
 const shared_styles = StyleSheet.create({
     img_in_view: {
@@ -53,7 +91,7 @@ const shared_styles = StyleSheet.create({
 
         justifyContent: "center",
         alignItems: "center",
-    }
+    },
 })
 
 export default shared_styles

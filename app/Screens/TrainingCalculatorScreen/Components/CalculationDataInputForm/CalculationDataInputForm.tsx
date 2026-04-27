@@ -4,9 +4,10 @@ import calculation_data_input_form from "./CalculationDataInputForm.styles";
 import CheckLabel from "../CheckLabel/CheckLabel";
 import { calculationDataT1, calculationDataT2, calculationDataT3, calculationDataT4 } from "../../../../../utills/consts";
 import NumericInput from "../../../../../Components/NumericInput/NumericInput";
-import SubmitButton from "../../../../../Components/SubmitButton/SubmitButton";
+import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedButton";
 import { armyTiers, armyTypes } from "../../../../../utills/enums";
 import { calculationData } from "../../../../../utills/types";
+import { colors } from "../../../../../utills/sharedStyles.styles";
 
 type Props = {childToParent: (calculationResults: Record<string, number>) => void}
 
@@ -135,7 +136,7 @@ function CalculationDataInputForm( { childToParent }: Props): React.JSX.Element 
             </View>
 
             <View style = {calculation_data_input_form.button_wrapper}>
-                <SubmitButton onPress = {() => {calculateAndSendData()}} title = "Calculate"/>
+                <ElevatedButton onPress = {() => {calculateAndSendData()}} title = "Calculate" colors = {[colors.bgPrimary, colors.surfaceRaised]}/>
             </View>
         </View>
     );

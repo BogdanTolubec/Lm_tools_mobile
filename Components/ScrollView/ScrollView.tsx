@@ -14,5 +14,5 @@ export function FullHeightScrollView(
 }
 
 const styles = StyleSheet.create({
-  grow: { flexGrow: 1},
+  grow: { flexGrow: 1, minWidth: "100%", alignItems: "center"},
 })

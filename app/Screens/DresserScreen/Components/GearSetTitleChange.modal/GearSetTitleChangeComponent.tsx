@@ -1,9 +1,10 @@
 import React, { useState } from "react"
 import { Text, TextInput, View } from "react-native";
-import SubmitButton from "../../../../../Components/SubmitButton/SubmitButton";
+import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedButton";
 import { gearSet } from "../../../../../utills/types";
 import gear_set_title_change_component from "./GearSetTitleChangeComponent.styles";
 import { validateInputStringBySymbols } from "../../../../../utills/functions/validation.functions";
+import { colors } from "../../../../../utills/sharedStyles.styles";
 
 type Props = {
     gearSet: gearSet,
@@ -33,7 +34,7 @@ function GearSetTitleChangeComponent({gearSet, setGearSet}: Props): React.JSX.El
             }} style = {gear_set_title_change_component.input} maxLength = {10}/>
 
             <View style = {gear_set_title_change_component.button_wrapper}>
-                <SubmitButton title = "Submit" onPress = {() => {onChangeTitle(newTitle)}}/>
+                <ElevatedButton title = "Submit" onPress = {() => {onChangeTitle(newTitle)}} colors = {[colors.bgPrimary, colors.surfaceRaised]}/>
             </View>
         </View>
     );

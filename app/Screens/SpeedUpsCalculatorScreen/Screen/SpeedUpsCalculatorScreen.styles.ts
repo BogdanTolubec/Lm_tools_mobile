@@ -1,43 +1,59 @@
 import { StyleSheet } from "react-native";
 import { typography } from "../../../../utills/typography";
+import { spacing } from "../../../../utills/sharedStyles.styles";
 
 const speed_ups_calculator_screen = StyleSheet.create({
     wrapper: {
         flex: 1,
-        width: "100%",
+
+        alignItems: "center",
+        justifyContent: "center",
     },
 
     inputs_wrapper: {
-        width: "100%",
-        alignItems: "center",
-        padding: 8,
-        paddingBottom: 24,
-        gap: 12,
-    },
 
-    input_wrapper: {
-        width: "70%",
-        minHeight: 180,
-    },
-
-    results_wrapper: {
-        width: "100%",
-        minHeight: 72,
+        width: "90%",
 
         justifyContent: "center",
         alignItems: "center",
-
-        backgroundColor: "rgba(0,0,0,0.7)",
-        paddingHorizontal: 12,
-        paddingVertical: 12,
     },
 
-    result_text: {
-        color: "white",
+    input_wrapper: {
+        width: "100%",
+        minHeight: 180,
+        marginVertical: 8,
+    },
+
+    results_wrapper: {
+        width: "85%",
+
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+
+        backgroundColor: '#112033',
+
+        borderWidth: 1,
+        borderColor: 'rgba(215,174,99,0.55)',
+
+        marginBottom: 18,
+        borderRadius: 24,
+        padding: 20,
+
+        gap: 10,
+    },
+
+    summary_label_text: {
+        color: '#D7AE63',
         fontWeight: "700",
-        fontSize: 21,
-        letterSpacing: 2,
-        textAlign: "center",
+        fontSize: 18,
+        letterSpacing: spacing.xxs,
+    },
+
+    total_time_text: {
+        fontSize: 28,
+        fontWeight: '800',
+        color: '#F3F1EA',
     },
 });
 

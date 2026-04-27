@@ -26,7 +26,7 @@ function NumericInput({minValue, maxValue, placeholder, styles, setParentElement
                 setParentElementState(validatedValue === "" ? minValue : Number(validatedValue));
             });
         }
-        } placeholder = {placeholder} mode = "outlined"/>
+        } placeholder = {placeholder} mode = "outlined" underlineColor = "blue"/>
     );
 }
 

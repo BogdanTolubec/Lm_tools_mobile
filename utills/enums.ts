@@ -90,6 +90,8 @@ export enum IconPathConsts{
     menuIcon = rootAssetsIconsPath + "/menu.png",
     questionMarkIcon = rootAssetsIconsPath + "/question_mark.png",
     closeIcon = rootAssetsIconsPath + "/close.png",
+    plusIcon = rootAssetsIconsPath + "/plus.png",
+    minusIcon = rootAssetsIconsPath + "/minus.png",
 
     researchesIcon = rootAssetsIconsPath + "/researches.png",
     calculatorIcon = rootAssetsIconsPath + "/calculator.png",
@@ -100,6 +102,8 @@ export enum IconPathConsts{
 
     //speedUpCard
     speedUpIcon = rootAssetsIconsPath + "/speed_up.png",
+    speedUpBadgeIcon = rootAssetsIconsPath + "/speed_up_badge.png",
+    hourglassIcon = rootAssetsIconsPath + "/hourglass_icon.png",
     
     commonChooseLableIcon = rootAssetsIconsPath + "/common_icon.png",
     uncommonChooseLableIcon = rootAssetsIconsPath + "/uncommon_icon.png",
