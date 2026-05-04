@@ -11,7 +11,7 @@ const menu_icon = StyleSheet.create({
         flex: 1,
         width: null,
         height: null,
-        resizeMode: 'contain',
+        resizeMode: "contain",
     }
 })
 

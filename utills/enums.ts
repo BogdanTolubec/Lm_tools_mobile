@@ -42,11 +42,10 @@ export enum armyTypes {
 }
 
 export enum armyTiers {
-    tier1 = "t1",
-    tier2 = "t2",
-    tier3 = "t3",
-    tier4 = "t4",
-    tier5 = "t5",
+    tier1 = "T1",
+    tier2 = "T2",
+    tier3 = "T3",
+    tier4 = "T4",
 }
 
 export enum pieceTypes {
@@ -59,6 +58,15 @@ export enum pieceTypes {
     accessory1 = "accessory1",
     accessory2 = "accessory2",
     accessory3 = "accessory3",
+}
+
+export enum resourcesTypes {
+    food = "food",
+    stone = "stone",
+    wood = "wood",
+    ore = "ore",
+    gold = "gold",
+    trainingTime = "trainingTime",
 }
 
 //paths consts
@@ -86,6 +94,20 @@ export enum ImgPathConsts{
 
 export enum IconPathConsts{
     rootAssetsIconsPath = "asset:/img/Icons",
+
+    //army types icons
+    armyIcon = rootAssetsIconsPath + "/army_icon.png",
+    infantryIcon = rootAssetsIconsPath + "/infantry_icon.png",
+    rangedIcon = rootAssetsIconsPath + "/ranged_icon.png",
+    cavalryIcon = rootAssetsIconsPath + "/cavalry_icon.png",
+    siegesIcon = rootAssetsIconsPath + "/sieges_icon.png",
+
+    //rss types icons
+    foodIcon = rootAssetsIconsPath + "/food_icon.png",
+    woodIcon = rootAssetsIconsPath + "/wood_icon.png",
+    stoneIcon = rootAssetsIconsPath + "/stone_icon.png",
+    oreIcon = rootAssetsIconsPath + "/ore_icon.png",
+    goldIcon = rootAssetsIconsPath + "/gold_icon.png",
 
     menuIcon = rootAssetsIconsPath + "/menu.png",
     questionMarkIcon = rootAssetsIconsPath + "/question_mark.png",

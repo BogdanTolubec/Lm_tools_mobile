@@ -187,7 +187,7 @@ function PieceInfo({pieceType, gearSetSelected, isOuterModalVisible, setInnerMod
     }, [gearSetSelected, pieceType])
 
     useEffect(() => {
-        if(!isOuterModalVisible) setIsItemSelectorModalActive(false) // close inner modal if outer modal is closed (may be now I don't need it...)
+        if(!isOuterModalVisible) setIsItemSelectorModalActive(false) // close inner modal if outer modal is closed (may be now I don"t need it...)
 
         setInnerModalVisible(isItemSelectorModalActive) // send to dresser screen checking predicat on clothing outer modal
     }, [isItemSelectorModalActive ,isOuterModalVisible])

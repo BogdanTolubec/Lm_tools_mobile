@@ -1,26 +1,30 @@
-import React from 'react';
-import {StyleSheet} from 'react-native';
+import React from "react";
+import {StyleSheet} from "react-native";
+import { colors } from "../../../../utills/sharedStyles.styles";
 
 const training_calculator_styles = StyleSheet.create(
     {
         wrapper: {
-            minHeight: "100%",
-            width: "100%",
-            padding: 3,
+            flex: 1,
 
-            display: "flex",
-            flexDirection: "column",
+            alignContent: "center",
 
-            justifyContent: "space-between",
-            
-            backgroundColor: "rgba(0, 0, 0, 0.6)",
+            padding: 5,
+            gap: 20,
         },
 
-        scrollViewStyles:{
-            display: "flex",
-            flexDirection: "column",
-            minHeight: "100%",
-            width:"100%",
+        input_wrapper:{
+            width: "100%",
+
+            borderRadius: 24,
+            padding: 12,
+            borderWidth: 1,
+            borderColor: colors.borderSoft,
+            marginBottom: 18,
+        },
+
+        output_wrapper: {
+            minWidth: "95%",
         },
     }
 );

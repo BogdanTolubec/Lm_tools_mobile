@@ -1,11 +1,11 @@
-import React from 'react'
-import { ImgPathConsts } from '../../../../../utills/enums'
-import { jewel } from '../../../../../utills/types'
-import { setGearImageBackgroundByRareness } from '../../../../../utills/functions/images.functions'
-import { ImageBackground, TouchableOpacity, View } from 'react-native'
-import ImageInWrapper from '../../../../../Components/ImageInWrapper/ImageInWrapper'
-import shared_styles from '../../../../../utills/sharedStyles.styles'
-import jewel_styles from './Jewel.styles'
+import React from "react"
+import { ImgPathConsts } from "../../../../../utills/enums"
+import { jewel } from "../../../../../utills/types"
+import { setGearImageBackgroundByRareness } from "../../../../../utills/functions/images.functions"
+import { ImageBackground, TouchableOpacity, View } from "react-native"
+import ImageInWrapper from "../../../../../Components/ImageInWrapper/ImageInWrapper"
+import shared_styles from "../../../../../utills/sharedStyles.styles"
+import jewel_styles from "./Jewel.styles"
 
 type Props = {
     jewel: jewel | undefined,

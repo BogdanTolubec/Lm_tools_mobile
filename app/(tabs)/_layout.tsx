@@ -1,12 +1,12 @@
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { IconPathConsts, ScreensEnum } from '../../utills/enums';
-import TrainingCalculatorScreen from '../Screens/TrainingCalculatorScreen/Screen/TrainingCalculatorScreen';
-import DresserScreen from '../Screens/DresserScreen/Screen/DresserScreen';
-import TabIcon from './TabIcon/TabIcon';
-import SpeedUpsCalculatorScreen from '../Screens/SpeedUpsCalculatorScreen/Screen/SpeedUpsCalculatorScreen';
-import ResearchesToolsScreen from '../Screens/ResearchesToolsScreen/Screen/ResearchesToolsScreen';
+import React from "react"
+import { NavigationContainer } from "@react-navigation/native"
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { IconPathConsts, ScreensEnum } from "../../utills/enums";
+import TrainingCalculatorScreen from "../Screens/TrainingCalculatorScreen/Screen/TrainingCalculatorScreen";
+import DresserScreen from "../Screens/DresserScreen/Screen/DresserScreen";
+import TabIcon from "./TabIcon/TabIcon";
+import SpeedUpsCalculatorScreen from "../Screens/SpeedUpsCalculatorScreen/Screen/SpeedUpsCalculatorScreen";
+import ResearchesToolsScreen from "../Screens/ResearchesToolsScreen/Screen/ResearchesToolsScreen";
 
 function TabLayout(): React.JSX.Element {
 
@@ -25,7 +25,7 @@ function TabLayout(): React.JSX.Element {
                 borderTopColor: "#232533",
                 height: 50,
                 display: "flex",
-                justifyContent: 'center',
+                justifyContent: "center",
                 paddingTop: 18,
           },
         }}>

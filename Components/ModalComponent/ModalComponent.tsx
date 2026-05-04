@@ -1,8 +1,8 @@
-import React from 'react'
-import { TouchableOpacity, View } from 'react-native';
-import modal_component from './ModalComponent.styles';
-import ImageInWrapper from '../ImageInWrapper/ImageInWrapper';
-import { IconPathConsts } from '../../utills/enums';
+import React from "react"
+import { TouchableOpacity, View } from "react-native";
+import modal_component from "./ModalComponent.styles";
+import ImageInWrapper from "../ImageInWrapper/ImageInWrapper";
+import { IconPathConsts } from "../../utills/enums";
 
 type Props = {
     visible: boolean,

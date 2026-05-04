@@ -1,6 +1,7 @@
+import { resultCardsTypes } from "./functions/resourcesCalculationFunctions"
 import { calculationData, gearSet, statsShowInfo } from "./types"
 
-export const gearSetPiecesCount = 8 //it's const 8 don't touch it :)
+export const gearSetPiecesCount = 8 //it"s const 8 don"t touch it :)
 export const jewelsByPiece = 3
 export const maxItemsInBagValue = 65536
 export const tempernessLevelsNumber = 15
@@ -10,6 +11,17 @@ export const minutesInDay = minutesInHour * 24
 
 //Training calculator consts__________
 //t1
+
+export const calculationResultsPlaceholder: Record<resultCardsTypes, number> = {
+    food: 0,
+    stone: 0,
+    wood: 0,
+    ore: 0,
+    gold: 0,
+    trainingTime: 0,
+    armyCount: 0,
+}
+
 export const calculationDataT1: calculationData = {
     infantryRss: [50, 0, 50, 50, 0], // [food, stone, wood, ore, gold]
     rangedRss: [50, 50, 50, 0, 0],

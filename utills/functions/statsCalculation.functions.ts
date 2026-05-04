@@ -34,7 +34,7 @@ export function calculateGearSetStats(gearSet: gearSet | undefined): stats{
     return calculatedStats
 }
 
-function addStats(stats1: stats | undefined, stats2: stats | undefined): stats{ //adds to objects type 'stats' and returns a new object type 'stats'
+function addStats(stats1: stats | undefined, stats2: stats | undefined): stats{ //adds to objects type "stats" and returns a new object type "stats"
     
     if(!stats1 && stats2)
         return stats2
@@ -112,7 +112,7 @@ export function convertStatsIntoStatsShowInfo(stat: stats | undefined): statsSho
     return statsShowInfoResult
 }
 
-export function calculatePieceAndJewelsStats(pieceStats: stats | undefined, jewels: Array<jewel | undefined> | undefined): stats { //calculates stats by piece and it's jewels
+export function calculatePieceAndJewelsStats(pieceStats: stats | undefined, jewels: Array<jewel | undefined> | undefined): stats { //calculates stats by piece and it"s jewels
     let calculatedStats: stats = {
         armyAtk: 0,
         armyHp: 0,

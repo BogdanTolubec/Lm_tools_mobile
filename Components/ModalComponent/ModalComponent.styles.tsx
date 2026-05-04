@@ -1,9 +1,9 @@
-import React from 'react'
-import { StyleSheet } from 'react-native'
+import React from "react"
+import { StyleSheet } from "react-native"
 
 const modal_component = StyleSheet.create({
     wrapper: {
-        position: 'absolute', //because of this cannot center components inside with justify-content and aligns :/
+        position: "absolute", //because of this cannot center components inside with justify-content and aligns :/
     },
 
     background: {
@@ -16,7 +16,7 @@ const modal_component = StyleSheet.create({
     content: {
         height: "95%",
         width: "100%",
-        position: 'absolute',
+        position: "absolute",
     },
 
     closing_icon_line: {

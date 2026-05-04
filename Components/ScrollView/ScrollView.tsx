@@ -1,10 +1,10 @@
-import * as React from 'react'
-import { ScrollView, ScrollViewProps, StyleSheet } from 'react-native'
+import * as React from "react"
+import { ScrollView, ScrollViewProps, StyleSheet } from "react-native"
 
 export function FullHeightScrollView(
   props: {
     children: React.ReactNode
-  } & Omit<ScrollViewProps, 'contentContainerStyle'>
+  } & Omit<ScrollViewProps, "contentContainerStyle">
 ) {
   return (
     <ScrollView contentContainerStyle = {styles.grow} {...props}>

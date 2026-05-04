@@ -5,6 +5,7 @@ import elevated_button from "./ElevatedButton.styles";
 import { Icon } from "react-native-paper";
 
 type Props = {
+    key?: React.Key,
     onPress: (() => void) | undefined,
     title?: string,
     colors: (string | number)[],
@@ -13,10 +14,10 @@ type Props = {
     iconSize?: number
 }
 
-function ElevatedButton( {onPress, title, colors, isIcon, iconPath, iconSize = 30}: Props ): React.JSX.Element {
+function ElevatedButton( {key, onPress, title, colors, isIcon, iconPath, iconSize = 30}: Props ): React.JSX.Element {
 
     return(
-        <Pressable onPress = {onPress} style = {{flex: 1}}>
+        <Pressable key = {key} onPress = {onPress} style = {{flex: 1}}>
             <LinearGradient  colors = {colors}
                 start = {{ x: 0.5, y: 0 }}
                 end = {{ x: 0.5, y: 1 }}

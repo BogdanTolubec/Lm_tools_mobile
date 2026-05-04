@@ -5,43 +5,50 @@ export function isNumberPositive(number: number){
 }
 
 export function validateInputTypeNumber( input: string, minValue: number, maxValue: number, 
-    setStateFunction: React.Dispatch<React.SetStateAction<string>> ): void {
-    const validatedInput = input.trim();
+    setStateFunction: (value: string) => void ): void{
+    let validatedInput = input.trim()
 
     if (validatedInput === "") {
-        setStateFunction("");
-        return;
+        setStateFunction("")
+        return
     }
 
     if (!/^\d+$/.test(validatedInput)) {
-        return;
+        return
     }
 
     if (validatedInput.length > 1 && validatedInput.startsWith("0")) {
-        return;
+        validatedInput = validatedInput.replace(/^0+/, "") || "0"
     }
 
-    const numberInput = Number(validatedInput);
+    const numberInput = Number(validatedInput)
 
     if (!Number.isFinite(numberInput)) {
-        return;
+        return
     }
 
     if (numberInput < minValue || numberInput > maxValue) {
-        return;
+        return
     }
 
-    setStateFunction(validatedInput);
+    setStateFunction(validatedInput)
 }
 
-export const validateInputStringBySymbols = (value: string, setStateFunction: React.Dispatch<React.SetStateAction<string>>,) => { // string validation on special symbols
+export function validateStringReturnNumber( string: string): number{
+    if (string === "") {
 
-    const format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+        return 0
+    }
 
-    if(!format.test(value)){
-        setStateFunction(value)
+    if (!/^\d+$/.test(string)) {
+        return 0
     }
-    else{
-        setStateFunction("")
+
+    const number = Number(string)
+
+    if (!Number.isFinite(number)) {
+        return 0
     }
+
+    return number
 }

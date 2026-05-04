@@ -13,7 +13,7 @@ export function userFriendlyBigNumbersVisualisation(number: number): string{
     let result: string = ""
 
     while(i > 0){
-        if((numberLength - i) % 3 === 0 && i !== numberLength) //if it's a 3rd iteration we add '.'
+        if((numberLength - i) % 3 === 0 && i !== numberLength) //if it"s a 3rd iteration we add "."
         {
             result += "."
         }

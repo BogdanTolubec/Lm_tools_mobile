@@ -11,7 +11,7 @@ const speed_ups_card = StyleSheet.create({
 
         borderRadius: 15,
 
-        backgroundColor: '#112033',
+        backgroundColor: "#112033",
 
         borderWidth: 1,
         borderColor: colors.borderSoft,

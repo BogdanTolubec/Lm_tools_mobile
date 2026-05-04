@@ -9,6 +9,7 @@ import { typography } from "../../../../../utills/typography";
 import { numbersUpToTrillionReducer, speedUpValueUserFriendlyVisualisation, timeConverterFromSecondsToStringInDaysHoursMinutesFormat } from "../../../../../utills/functions/userFriendlyVisualisation.functions";
 import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedButton";
 import { colors, iconSizes } from "../../../../../utills/sharedStyles.styles";
+import SVGBackground from "../../../../../Components/SVGBackground/SVGBackground";
 
 type Props = {
     itemsCount: number,
@@ -26,7 +27,8 @@ function SpeedUpsCard({itemsCount, speedUpValueInMinutes, indexInArray, onCountC
 
     return(
         <Surface style = {speed_ups_card.wrapper} mode = "elevated">
-           <View style = {speed_ups_card.first_row}>
+            <SVGBackground radius = {10}/>
+            <View style = {speed_ups_card.first_row}>
 
                 <Surface style = {speed_ups_card.time_badge} elevation = {5}>
                     <Text style = {speed_ups_card.text}> {speedUpValueUserFriendlyVisualisation(speedUpValueInMinutes)}</Text>
