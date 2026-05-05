@@ -1,15 +1,14 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Alert, Text, View } from "react-native";
-import calculation_data_input_form from "./CalculationDataInputForm.styles";
-import CheckLabel from "../CheckLabel/CheckLabel";
-import NumericInput from "../../../../../Components/NumericInput/NumericInput";
-import { armyTiers, armyTypes, IconPathConsts } from "../../../../../utills/enums";
-import { calculateTrainingResultsBySpeedUps, calculateTrainingResultsByArmyCount, validateTrainingCalculationParams, resultCardsTypes } from "../../../../../utills/functions/resourcesCalculationFunctions";
-import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedButton";
-import { colors } from "../../../../../utills/sharedStyles.styles";
-import { trainingCalculatorMode } from "../ModeSwitch/ModeSwitch";
-import { validateStringReturnNumber } from "../../../../../utills/functions/validation.functions";
-import { calculationResultsPlaceholder } from "../../../../../utills/consts";
+import React, { useCallback, useMemo, useState } from "react"
+import { Alert, Text, View } from "react-native"
+import calculation_data_input_form from "./CalculationDataInputForm.styles"
+import CheckLabel from "../CheckLabel/CheckLabel"
+import NumericInput from "../../../../../Components/NumericInput/NumericInput"
+import { armyTiers, armyTypes, IconPathConsts } from "../../../../../utills/enums"
+import { calculateTrainingResultsBySpeedUps, calculateTrainingResultsByArmyCount, validateTrainingCalculationParams, resultCardsTypes } from "../../../../../utills/functions/resourcesCalculationFunctions"
+import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedButton"
+import { colors } from "../../../../../utills/sharedStyles.styles"
+import { trainingCalculatorMode } from "../ModeSwitch/ModeSwitch"
+import { calculationResultsPlaceholder } from "../../../../../utills/consts"
 
 type Props = {
   childToParent: (calculationResults: Record<resultCardsTypes, number>) => void
@@ -131,8 +130,8 @@ function CalculationDataInputForm({ childToParent, mode }: Props): React.JSX.Ele
         </View>
       </View>
       <View
-        key={isArmyCountMode ? "army-mode" : "speedups-mode"}
-        style={calculation_data_input_form.inputs_wrapper}
+        key = {isArmyCountMode ? "army-mode" : "speedups-mode"}
+        style = {calculation_data_input_form.inputs_wrapper}
       >
         {isArmyCountMode ? (
           <>

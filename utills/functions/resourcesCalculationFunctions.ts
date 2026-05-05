@@ -109,7 +109,6 @@ export function calculateTrainingResultsBySpeedUps( {speedUpsCountInDays, traini
     const armyTypeRss: number[] = getArmyTypeRss(selectedTierData, armyType)
     const subsidyMultiplier: number = 1 - subsidy / 100
     const armyCount: number = daysToSeconds(speedUpsCountInDays) / selectedTierData.secondsTrainingSpeed * (1 + trainingSpeed / 100)
-    console.log("army count: " + armyCount)
 
     const results = createEmptyResults(mode)
 

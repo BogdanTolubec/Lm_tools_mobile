@@ -22,8 +22,8 @@ function NumericInput({minValue, maxValue, placeholder, styles, setParentElement
             onChangeText={(text) => {
             
             validateInputTypeNumber(text, minValue, maxValue, (validatedValue) => {
-                setInputValue(validatedValue);
-                setParentElementState(validatedValue === "" ? minValue : Number(validatedValue));
+                setInputValue(validatedValue)
+                setParentElementState(validatedValue === "" ? minValue : Number(validatedValue))
             });
         }
         } placeholder = {placeholder} mode = "outlined" underlineColor = "blue"/>

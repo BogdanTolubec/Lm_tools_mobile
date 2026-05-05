@@ -1,10 +1,11 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { View } from "react-native";
 import calculation_data_output_form from "./CalculationDataOutputForm.styles";
 import TrainingCalculatorResultCard from "../TrainingCalculatorResultCard/TrainingCalculatorResultCard";
 import { Text } from "react-native-paper";
 import { trainingCalculatorMode } from "../ModeSwitch/ModeSwitch";
 import { resultCardsTypes } from "../../../../../utills/functions/resourcesCalculationFunctions";
+import { calculationResultsPlaceholder } from "../../../../../utills/consts";
 
 type Props = {
     calculationResults: Record<resultCardsTypes, number>, 
@@ -12,6 +13,7 @@ type Props = {
 }
 
 function CalculationDataOutputForm( {calculationResults, mode}: Props ): React.JSX.Element {
+
     const isArmyCountMode = mode === trainingCalculatorMode.armyCount
 
     return(

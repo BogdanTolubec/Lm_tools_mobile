@@ -22,6 +22,7 @@ function TrainingCalculatorScreen(): React.JSX.Element {
 
     const onModeChange = (mode: trainingCalculatorMode) => {
         setMode(mode)
+        setCalculationResults(calculationResultsPlaceholder)
     }
 
     return(
@@ -33,9 +34,7 @@ function TrainingCalculatorScreen(): React.JSX.Element {
                         
                         <View style = {training_calculator_styles.input_wrapper}>
                             <SVGBackground radius = {4}/>
-                            <CalculationDataInputForm childToParent = {getCalculationResults} 
-                                onModeChange = {onModeChange} 
-                                mode = {mode}/>
+                            <CalculationDataInputForm childToParent = {getCalculationResults} mode = {mode}/>
                         </View>
 
                         <View style = {training_calculator_styles.output_wrapper}>
