@@ -1,14 +1,13 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 
-const dresser_screen = StyleSheet.create({
+const gear_set_screen_styles = StyleSheet.create({
         wrapper: {
             minHeight: "100%",
-            width: "100%",
+            minWidth: "100%",
             display: "flex",
-            padding: 5,
         },
     }
 )
 
-export default dresser_screen
+export default gear_set_screen_styles

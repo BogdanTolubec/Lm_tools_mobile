@@ -1,29 +1,30 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 
-const piece_in_set = StyleSheet.create({
+const piece_component_styles = StyleSheet.create({
     wrapper: {
-        height: "100%",
-        width: "100%",
+        flex: 1,
+
+        borderRadius: 30
     },
 
     rareness_background_img: {
-        height: "100%",
-        width: "100%",
+        flex: 1,
+        borderRadius: 20,
         justifyContent: "center",
         alignItems: "center",
     },
 
     piece_img_wrapper: {
-        height: "90%",
-        width: "90%",
+        height: "100%",
+        width: "100%",
+
+        padding: 4,
     },
 
     piece_img: {
         flex: 1,
-        width: null,
-        height: null,
-        resizeMode: "contain",
+
         justifyContent: "flex-end",
     },
 
@@ -39,13 +40,30 @@ const piece_in_set = StyleSheet.create({
 
     tempernessLevelText: {
         fontSize: 10,
-        fontWeight: "700",
+        fontWeight: "900",
         color: "white",
 
         textShadowColor: "#000000",
         textShadowRadius: 2,
-        textShadowOffset: {height: 1, width: 1},
+        textShadowOffset: {height: 2, width: 2},
+    },
+
+    jewels_in_piece_wrapper: {
+        flex: 1,
+        flexDirection: "row",
+
+        justifyContent: "space-between",
+        alignItems: "center",
+    
+        borderRadius: 10,
+
+        opacity: 0.9,
+    },
+
+    jewel_in_piece_wrapper: {
+        height: "100%",
+        width: "31%",
     },
 })
 
-export default piece_in_set
+export default piece_component_styles

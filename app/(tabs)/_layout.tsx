@@ -7,6 +7,7 @@ import DresserScreen from "../Screens/DresserScreen/Screen/DresserScreen";
 import TabIcon from "./TabIcon/TabIcon";
 import SpeedUpsCalculatorScreen from "../Screens/SpeedUpsCalculatorScreen/Screen/SpeedUpsCalculatorScreen";
 import ResearchesToolsScreen from "../Screens/ResearchesToolsScreen/Screen/ResearchesToolsScreen";
+import GearSetScreen from "../Screens/GearSetsScreen/Screen/GearSetScreen";
 
 function TabLayout(): React.JSX.Element {
 
@@ -29,7 +30,7 @@ function TabLayout(): React.JSX.Element {
                 paddingTop: 18,
           },
         }}>
-                <Tab.Screen name = {ScreensEnum.dresser} component = {DresserScreen} options = {
+                <Tab.Screen name = {ScreensEnum.dresser} component = {GearSetScreen} options = {
                     {
                         title: "Dresser",
                         headerShown: false,

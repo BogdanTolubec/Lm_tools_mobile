@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, ImageBackground, Text, TouchableOpacity, View } from "react-native";
+import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
 import { ImgPathConsts, pieceTypes} from "../../../../../utills/enums";
 import { gearSet, Piece } from "../../../../../utills/types";
 import StatsList from "../StatsList/StatsList";

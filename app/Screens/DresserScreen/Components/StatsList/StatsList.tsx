@@ -32,21 +32,21 @@ function StatsList({statsToShow}: Props): React.JSX.Element {
     return(
         <View>
             {
-            listData.map((item, index) => {
-                if(item.stat !== 0)
-                {
-                return(
-                    <View key = {index} style = {stats_list.stat_wrapper}>
-                        <Text style = {shared_styles.stats_text}> {item.text}: </Text>
-                        <Text style = {shared_styles.stats_text}>{item.stat}</Text>
-                    </View>
-                )
-                }
+                listData.map((item, index) => {
+                    if(item.stat !== 0)
+                    {
+                    return(
+                        <View key = {index} style = {stats_list.stat_wrapper}>
+                            <Text style = {shared_styles.stats_text}> {item.text}: </Text>
+                            <Text style = {shared_styles.stats_text}>{item.stat}</Text>
+                        </View>
+                    )
+                    }
 
-                else{
-                    return(<View key = {index}></View>)
-                }
-            })
+                    else{
+                        return(<View key = {index}></View>)
+                    }
+                })
             }
         </View>
     );

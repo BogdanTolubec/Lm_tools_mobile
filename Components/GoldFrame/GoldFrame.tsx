@@ -8,7 +8,7 @@ type Props = {
 
 function GoldFrame({ radius = 20 }: Props) {
   return (
-    <View pointerEvents="none" style={StyleSheet.absoluteFill}>
+    <View pointerEvents="none" style={{...StyleSheet.absoluteFill, zIndex: 2, pointerEvents: "none"}}>
       <Svg width = "100%" height = "100%" viewBox = "0 0 100 100" preserveAspectRatio = "none">
         <Defs>
           <LinearGradient id="goldStroke" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -38,22 +38,6 @@ function GoldFrame({ radius = 20 }: Props) {
           fill="transparent"
           stroke="url(#goldStroke)"
           strokeWidth="1.6"
-        />
-
-        {/* Верхний блик */}
-        <Path
-          d = "M8 8 H92"
-          stroke = "rgba(255,233,180,0.30)"
-          strokeWidth = "0.9"
-          strokeLinecap = "round"
-        />
-
-        {/* Нижняя тень внутри рамки */}
-        <Path
-          d = "M10 92 H90"
-          stroke = "rgba(90,55,15,0.25)"
-          strokeWidth = "0.9"
-          strokeLinecap = "round"
         />
       </Svg>
     </View>

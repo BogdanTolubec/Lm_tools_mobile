@@ -11,6 +11,7 @@ import JewelsInPiece from "../JewelsInPiece/JewelsInPiece";
 import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedButton";
 import { getDBConnection, updateGearSet } from "../../../../../utills/functions/db-service";
 import { colors } from "../../../../../utills/sharedStyles.styles";
+import GoldFrame from "../../../../../Components/GoldFrame/GoldFrame";
 
 type Props = {
     title: string | null,
@@ -71,7 +72,8 @@ function SetOfPieces ({gearSet, title, onPieceSelected, onMenuClicked, onTitleCl
                 <View style = {set_of_pieces.center_of_set_wrapper}>
 
                     <View style = {set_of_pieces.center_of_set}>
-                        <View style = {set_of_pieces.piece_wrapper}>      
+                        <View style = {set_of_pieces.piece_wrapper}>
+                            <GoldFrame radius = {20}/>      
                             <PieceOfSet piece = {gearSet.helmet}
                             onPress = {() => onPieceSelected(gearSet?.helmet, pieceTypes.helmet)} 
                             jewels = {<JewelsInPiece jewels = {gearSet?.helmet?.jewels}/>}/>
@@ -93,8 +95,8 @@ function SetOfPieces ({gearSet, title, onPieceSelected, onMenuClicked, onTitleCl
 
                         <View style = {set_of_pieces.piece_wrapper}>
                             <PieceOfSet piece = {gearSet.accessory2}
-                            onPress = {() => onPieceSelected(gearSet?.accessory2, pieceTypes.accessory2)} 
-                            jewels = {<JewelsInPiece jewels = {gearSet?.accessory2?.jewels}/>}/>
+                                onPress = {() => onPieceSelected(gearSet?.accessory2, pieceTypes.accessory2)} 
+                                jewels = {<JewelsInPiece jewels = {gearSet?.accessory2?.jewels}/>}/>
                         </View>
                     </View>
 

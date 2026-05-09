@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { ImageBackground, View } from "react-native";
 import dresser_screen from "./DresserScreen.styles";
-import { ImgPathConsts, pieceTypes } from "../../../../utills/enums";
+import { ImgPathConsts, pieceTypes, rareness } from "../../../../utills/enums";
 import SetOfPieces from "../Components/SetOfPieces/SetOfPieces";
 import { getALLGearSets, getDBConnection} from "../../../../utills/functions/db-service";
 import Swapper from "../../../../Components/Swapper/Swapper";
@@ -12,6 +12,7 @@ import { gearSetPlaceHolder } from "../../../../utills/consts";
 import GearSetTitleChangeComponent from "../Components/GearSetTitleChange.modal/GearSetTitleChangeComponent";
 import PieceInfo from "../Components/PieceInfo.modal/PieceInfo";
 import GearSetStatsList from "../Components/GearSetStatsList.modal/GearSetStatsList";
+import shared_styles from "../../../../utills/sharedStyles.styles";
 
 function DresserScreen(): React.JSX.Element{
 
@@ -85,7 +86,7 @@ function DresserScreen(): React.JSX.Element{
     }, [currentGearSet])
     
     return(
-                <ImageBackground style = {dresser_screen.backgroundImg} source = {{uri: ImgPathConsts.backgroundImage}} resizeMode = "cover">
+                <ImageBackground style = {shared_styles.background_img} source = {{uri: ImgPathConsts.backgroundImage}} resizeMode = "cover">
                     <View style = {dresser_screen.wrapper}>
                         <ModalComponent visible = {isPieceInfoModalActive} setVisible = {setIsPieceInfoModalActive} children = {
                             <PieceInfo gearSetSelected = {currentGearSet} 
@@ -114,6 +115,7 @@ function DresserScreen(): React.JSX.Element{
                                 onPieceSelected = {onPieceSelected} onMenuClicked = {onMenuClicked} onTitleClicked = {onTitleClicked}
                                 onQuestionMarkClicked = {onQuestionMarkClicked}/>
                         }       componentsCount = {allGearSets.length} childToParent = {onGearSetSwap}/>
+                        
                     </View>   
                 </ImageBackground>
     );

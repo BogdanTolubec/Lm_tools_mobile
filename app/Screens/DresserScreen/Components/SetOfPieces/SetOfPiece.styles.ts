@@ -50,8 +50,6 @@ const set_of_pieces = StyleSheet.create({
         alignItems: "center",
 
         padding: 3,
-
-        backgroundColor: "rgba(0, 0, 0, 0.6)",
     },
 
     start_of_set: {

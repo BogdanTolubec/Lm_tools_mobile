@@ -1,10 +1,11 @@
 import React from "react";
 import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
 import piece_in_set from "./Piece.styles";
-import { IconPathConsts, ImgPathConsts, rareness } from "../../../../../utills/enums";
+import { IconPathConsts, ImgPathConsts } from "../../../../../utills/enums";
 import { setGearImageBackgroundByRareness } from "../../../../../utills/functions/images.functions";
 import { Piece } from "../../../../../utills/types";
 import shared_styles from "../../../../../utills/sharedStyles.styles";
+import GoldFrame from "../../../../../Components/GoldFrame/GoldFrame";
 
 type Props = {
     piece: Piece | undefined,
@@ -18,7 +19,10 @@ function PieceOfSet({piece, jewels, onPress}: Props): React.JSX.Element {
     
     return(
         <TouchableOpacity onPress = {onPress} style = {piece_in_set.wrapper}>
-            <ImageBackground source = {{uri: piece_rareness_background_image_path}} style = {piece_in_set.rareness_background_img}>
+            <GoldFrame radius = {20}/>
+            <ImageBackground source = {{uri: piece_rareness_background_image_path}} 
+                style = {piece_in_set.rareness_background_img}
+                imageStyle = {{borderRadius: 13}}>
                 <View style = {piece_in_set.piece_img_wrapper}>
                     <ImageBackground style = {piece_in_set.piece_img} 
                         source = {{uri: ImgPathConsts.rootAssetsImgPath + piece?.imagePath}}>
