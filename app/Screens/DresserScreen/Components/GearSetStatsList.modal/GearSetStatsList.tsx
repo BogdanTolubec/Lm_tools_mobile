@@ -4,7 +4,7 @@ import { gearSet, statsShowInfo } from "../../../../../utills/types";
 import { statsObject } from "../../../../../utills/consts";
 import { calculateGearSetStats, convertStatsIntoStatsShowInfo } from "../../../../../utills/functions/statsCalculation.functions";
 import gear_set_stats_list from "./GearSetStatsList.styles";
-import shared_styles from "../../../../../utills/sharedStyles.styles";
+import shared_styles from "../../../../../utills/styles/sharedStyles.styles";
 
 type Props = {
     gearSet: gearSet | undefined

@@ -16,7 +16,7 @@ import ImageInWrapper from "../../../../../Components/ImageInWrapper/ImageInWrap
 import NumericInput from "../../../../../Components/NumericInput/NumericInput"
 import { tempernessLevelsNumber } from "../../../../../utills/consts"
 import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedButton"
-import { colors } from "../../../../../utills/sharedStyles.styles"
+import { colors } from "../../../../../utills/styles/sharedStyles.styles"
 
 type Props = {
     pieceType: pieceTypes,

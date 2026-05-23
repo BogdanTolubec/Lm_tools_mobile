@@ -4,13 +4,13 @@ import set_of_pieces from "./SetOfPiece.styles";
 import { gearSet, Piece} from "../../../../../utills/types";
 import { IconPathConsts, ImgPathConsts, pieceTypes } from "../../../../../utills/enums";
 import MenuIcon from "../../../../../Components/MenuIcon/MenuIcon";
-import { gearSetPlaceHolder } from "../../../../../utills/consts";
+import { createGearSetPlaceholder } from "../../../../../utills/functions/placeholdersCreationFunctions";
 import PieceOfSet from "../Piece/Piece";
 import ImageInWrapper from "../../../../../Components/ImageInWrapper/ImageInWrapper";
 import JewelsInPiece from "../JewelsInPiece/JewelsInPiece";
 import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedButton";
 import { getDBConnection, updateGearSet } from "../../../../../utills/functions/db-service";
-import { colors } from "../../../../../utills/sharedStyles.styles";
+import { colors } from "../../../../../utills/styles/sharedStyles.styles";
 import GoldFrame from "../../../../../Components/GoldFrame/GoldFrame";
 
 type Props = {
@@ -24,7 +24,7 @@ type Props = {
 
 function SetOfPieces ({gearSet, title, onPieceSelected, onMenuClicked, onTitleClicked, onQuestionMarkClicked}: Props): React.JSX.Element {
 
-    if(gearSet === undefined)  gearSet = gearSetPlaceHolder
+    if(gearSet === undefined)  gearSet = createGearSetPlaceholder()
 
     const onSaveChanges = async (): Promise<void> => {
         try{

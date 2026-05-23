@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { colors } from "../../utills/sharedStyles.styles";
+import { colors } from "../../utills/styles/sharedStyles.styles";
 
 const loder_styles = StyleSheet.create({
   wrapper: {

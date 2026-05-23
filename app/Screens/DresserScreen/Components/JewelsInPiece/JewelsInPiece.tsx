@@ -2,7 +2,7 @@ import React from "react";
 import { ImageBackground, View } from "react-native";
 import { ImgPathConsts } from "../../../../../utills/enums";
 import { jewel } from "../../../../../utills/types";
-import shared_styles from "../../../../../utills/sharedStyles.styles";
+import shared_styles from "../../../../../utills/styles/sharedStyles.styles";
 import jewels_in_piece from "./JewelsInPiece.styles";
 import Jewel from "../Jewel/Jewel";
 

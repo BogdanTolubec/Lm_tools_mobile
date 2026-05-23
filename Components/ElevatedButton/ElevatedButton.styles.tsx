@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { colors, spacing } from "../../utills/sharedStyles.styles";
+import { colors, spacing } from "../../utills/styles/sharedStyles.styles";
 
 const elevated_button = StyleSheet.create({
     wrapper: {

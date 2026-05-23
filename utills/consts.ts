@@ -1,5 +1,5 @@
 import { resultCardsTypes } from "./functions/resourcesCalculationFunctions"
-import { calculationData, gearSet, statsShowInfo } from "./types"
+import { calculationData, statsShowInfo } from "./types"
 
 export const gearSetPiecesCount = 8 //it"s const 8 don"t touch it :)
 export const jewelsByPiece = 3
@@ -78,19 +78,6 @@ export const speedUpsValuesArray: Array<number> = [
 ]
 
 //default objects__________
-export const gearSetPlaceHolder: gearSet = {
-    id: 1,
-    title: "MIX",
-    mainHand: undefined,
-    helmet: undefined,
-    plate: undefined,
-    boots: undefined,
-    secondHand: undefined,
-    accessory1: undefined,
-    accessory2: undefined,
-    accessory3: undefined,
-}
-
 export const statsObject: statsShowInfo[] = [
     {text: "Army atk", stat: 0}, {text: "Army hp", stat: 0},
     {text: "Army deff", stat: 0}, {text: "Infantry atk", stat: 0},

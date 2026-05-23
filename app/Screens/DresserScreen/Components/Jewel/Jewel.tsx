@@ -4,7 +4,7 @@ import { jewel } from "../../../../../utills/types"
 import { setGearImageBackgroundByRareness } from "../../../../../utills/functions/images.functions"
 import { ImageBackground } from "react-native"
 import ImageInWrapper from "../../../../../Components/ImageInWrapper/ImageInWrapper"
-import shared_styles from "../../../../../utills/sharedStyles.styles"
+import shared_styles from "../../../../../utills/styles/sharedStyles.styles"
 import jewel_styles from "./Jewel.styles"
 
 type Props = {

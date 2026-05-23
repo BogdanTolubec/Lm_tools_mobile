@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet} from "react-native";
-import { typography } from "../../../../../utills/typography";
-import { colors } from "../../../../../utills/sharedStyles.styles";
+import { typography } from "../../../../../utills/styles/typography";
+import { colors } from "../../../../../utills/styles/sharedStyles.styles";
 
 const mode_switch_styles = StyleSheet.create(
     {

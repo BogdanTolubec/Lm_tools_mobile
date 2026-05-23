@@ -5,7 +5,7 @@ import { IconPathConsts, ImgPathConsts } from "../../../../utills/enums";
 import { maxItemsInBagValue, speedUpsValuesArray } from "../../../../utills/consts";
 import speed_ups_calculator_screen from "./SpeedUpsCalculatorScreen.styles";
 import { timeConverterFromSecondsToStringInDaysHoursMinutesFormat } from "../../../../utills/functions/userFriendlyVisualisation.functions";
-import shared_styles, { iconSizes } from "../../../../utills/sharedStyles.styles";
+import shared_styles, { iconSizes } from "../../../../utills/styles/sharedStyles.styles";
 import { minutesToSeconds } from "../../../../utills/functions/timeConvertFunctions";
 import { FullHeightScrollView } from "../../../../Components/ScrollView/ScrollView";
 import { Icon } from "react-native-paper";

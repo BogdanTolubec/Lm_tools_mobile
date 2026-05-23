@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, StyleProp, TouchableOpacity, ViewStyle } from "react-native";
-import shared_styles from "../../utills/sharedStyles.styles";
+import shared_styles from "../../utills/styles/sharedStyles.styles";
 
 type Props = {
     imageSource: string | undefined,

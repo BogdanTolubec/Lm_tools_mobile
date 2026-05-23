@@ -4,7 +4,7 @@ import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedBut
 import { createGearSet, deleteGearSetById, getDBConnection } from "../../../../../utills/functions/db-service";
 import gear_set_menu from "./GearSetMenu.styles";
 import { gearSet} from "../../../../../utills/types";
-import { colors } from "../../../../../utills/sharedStyles.styles";
+import { colors } from "../../../../../utills/styles/sharedStyles.styles";
 
 type Props = {
     gearSet: gearSet,

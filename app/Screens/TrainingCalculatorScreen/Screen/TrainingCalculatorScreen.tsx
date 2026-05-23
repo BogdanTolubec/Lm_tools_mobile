@@ -4,7 +4,7 @@ import training_calculator_styles from "./TrainingCalculatorScreenStyles"
 import CalculationDataInputForm from "../Components/CalculationDataInputForm/CalculationDataInputForm";
 import CalculationDataOutputForm from "../Components/CalculationDataOutputForm/CalculationDataOutputForm";
 import { ImgPathConsts } from "../../../../utills/enums";
-import shared_styles from "../../../../utills/sharedStyles.styles";
+import shared_styles from "../../../../utills/styles/sharedStyles.styles";
 import { calculationResultsPlaceholder } from "../../../../utills/consts";
 import ModeSwitch, { trainingCalculatorMode } from "../Components/ModeSwitch/ModeSwitch";
 import { FullHeightScrollView } from "../../../../Components/ScrollView/ScrollView";

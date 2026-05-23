@@ -5,10 +5,10 @@ import { maxItemsInBagValue, minutesInHour } from "../../../../../utills/consts"
 import { IconPathConsts } from "../../../../../utills/enums";
 import { Icon, Surface } from "react-native-paper";
 import speed_ups_card from "./SpeedUpsCard.styles";
-import { typography } from "../../../../../utills/typography";
+import { typography } from "../../../../../utills/styles/typography";
 import { numbersUpToTrillionReducer, speedUpValueUserFriendlyVisualisation, timeConverterFromSecondsToStringInDaysHoursMinutesFormat } from "../../../../../utills/functions/userFriendlyVisualisation.functions";
 import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedButton";
-import { colors, iconSizes } from "../../../../../utills/sharedStyles.styles";
+import { colors, iconSizes } from "../../../../../utills/styles/sharedStyles.styles";
 import SVGBackground from "../../../../../Components/SVGBackground/SVGBackground";
 
 type Props = {

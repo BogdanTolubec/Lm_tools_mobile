@@ -4,7 +4,7 @@ import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedBut
 import { gearSet } from "../../../../../utills/types";
 import gear_set_title_change_component from "./GearSetTitleChangeComponent.styles";
 import { validateInputStringBySymbols } from "../../../../../utills/functions/validation.functions";
-import { colors } from "../../../../../utills/sharedStyles.styles";
+import { colors } from "../../../../../utills/styles/sharedStyles.styles";
 
 type Props = {
     gearSet: gearSet,

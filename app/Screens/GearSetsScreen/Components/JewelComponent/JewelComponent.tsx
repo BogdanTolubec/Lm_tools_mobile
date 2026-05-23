@@ -4,12 +4,12 @@ import { jewel } from "../../../../../utills/types"
 import { setGearImageBackgroundByRareness } from "../../../../../utills/functions/images.functions"
 import { ImageBackground, View } from "react-native"
 import ImageInWrapper from "../../../../../Components/ImageInWrapper/ImageInWrapper"
-import shared_styles from "../../../../../utills/sharedStyles.styles"
+import shared_styles from "../../../../../utills/styles/sharedStyles.styles.ts"
 import jewel_component_styles from "./JewelComponent.styles.ts"
 
 type Props = {
     jewel: jewel | undefined,
-    onPress?: () => void
+    onPress?: (jewel: jewel | undefined) => void
 }
 
 function JewelComponent({jewel, onPress}: Props): React.JSX.Element {
@@ -25,7 +25,12 @@ function JewelComponent({jewel, onPress}: Props): React.JSX.Element {
                     imageStyle = {{borderRadius: 5}}>
                     <ImageInWrapper wrapperStyles = {jewel_component_styles.wrapper} 
                         imageSource = { ImgPathConsts.rootAssetsImgPath + jewel?.imagePath}
-                        onPress = {onPress}/>
+                        onPress = {() => {
+                            onPress ?
+                            onPress(jewel)
+                            :
+                            1
+                        }}/>
                 </ImageBackground>
 
                 :

@@ -6,7 +6,7 @@ import NumericInput from "../../../../../Components/NumericInput/NumericInput"
 import { armyTiers, armyTypes, IconPathConsts } from "../../../../../utills/enums"
 import { calculateTrainingResultsBySpeedUps, calculateTrainingResultsByArmyCount, validateTrainingCalculationParams, resultCardsTypes } from "../../../../../utills/functions/resourcesCalculationFunctions"
 import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedButton"
-import { colors } from "../../../../../utills/sharedStyles.styles"
+import { colors } from "../../../../../utills/styles/sharedStyles.styles"
 import { trainingCalculatorMode } from "../ModeSwitch/ModeSwitch"
 import { calculationResultsPlaceholder } from "../../../../../utills/consts"
 

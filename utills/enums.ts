@@ -69,6 +69,24 @@ export enum resourcesTypes {
     trainingTime = "trainingTime",
 }
 
+export enum statsTypes {
+    armyAtk = "Army ATK",
+    armyHp = "Army HP",
+    armyDeff = "Army Deff",
+
+    infantryAtk = "Infantry ATK",
+    infantryHp = "Infantry HP",
+    infantryDeff = "Infantry Deff",
+
+    rangedAtk = "Ranged ATK",
+    rangedHp = "Ranged HP",
+    rangedDeff = "Ranged Deff",
+
+    cavalryAtk = "Cavalry ATK",
+    cavalryHp = "Cavalry HP",
+    cavalryDeff = "Cavalry Deff",
+}
+
 //paths consts
 export enum ImgPathConsts{
     rootAssetsImgPath = "asset:/img",

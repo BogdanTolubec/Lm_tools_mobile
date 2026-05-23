@@ -5,7 +5,7 @@ const piece_component_styles = StyleSheet.create({
     wrapper: {
         flex: 1,
 
-        borderRadius: 30
+        borderRadius: 33,
     },
 
     rareness_background_img: {
@@ -28,11 +28,6 @@ const piece_component_styles = StyleSheet.create({
         justifyContent: "flex-end",
     },
 
-    jewels_wrapper: {
-        height: "30%",
-        width: "100%",
-    },
-
     temperStarIconWrapper: {
         height: "33%",
         width: "33%",
@@ -49,7 +44,8 @@ const piece_component_styles = StyleSheet.create({
     },
 
     jewels_in_piece_wrapper: {
-        flex: 1,
+        height: "30%",
+        width: "100%",
         flexDirection: "row",
 
         justifyContent: "space-between",
@@ -58,11 +54,6 @@ const piece_component_styles = StyleSheet.create({
         borderRadius: 10,
 
         opacity: 0.9,
-    },
-
-    jewel_in_piece_wrapper: {
-        height: "100%",
-        width: "31%",
     },
 })
 

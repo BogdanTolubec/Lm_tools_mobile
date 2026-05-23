@@ -3,15 +3,15 @@ import { ImageBackground, Pressable, Text, View } from "react-native";
 import { IconPathConsts, ImgPathConsts } from "../../../../../utills/enums";
 import { setGearImageBackgroundByRareness } from "../../../../../utills/functions/images.functions";
 import { jewel, Piece } from "../../../../../utills/types";
-import shared_styles from "../../../../../utills/sharedStyles.styles";
+import shared_styles from "../../../../../utills/styles/sharedStyles.styles";
 import GoldFrame from "../../../../../Components/GoldFrame/GoldFrame";
 import piece_component_styles from "./PieceComponent.styles";
-import JewelComponent from "../JewelComponent/JewelComponent";
+import JewelsOfPiece from "../JewelsOfPieceComponent/JewelsOfPieceComponent";
 
 type Props = {
     piece: Piece | undefined,
     onPress?: () => void,
-    jewels?: Array<jewel | undefined> | null
+    jewels?: (jewel | undefined)[],
 }
 
 function PieceComponent({piece, jewels, onPress}: Props): React.JSX.Element {
@@ -20,7 +20,7 @@ function PieceComponent({piece, jewels, onPress}: Props): React.JSX.Element {
     
     return(
         <View style = {piece_component_styles.wrapper}>
-            <GoldFrame radius = {19}/>
+            <GoldFrame radius = {15}/>
 
             <Pressable onPress = {onPress} style = {piece_component_styles.wrapper}>
 
@@ -31,7 +31,7 @@ function PieceComponent({piece, jewels, onPress}: Props): React.JSX.Element {
                 <View style = {piece_component_styles.piece_img_wrapper}>
                     <ImageBackground style = {piece_component_styles.piece_img}
                         imageStyle = {shared_styles.img_in_view}
-                        source = {{uri: ImgPathConsts.rootAssetsImgPath + piece?.imagePath}}>
+                        source = {{uri: (piece ? ImgPathConsts.rootAssetsImgPath + piece.imagePath : ImgPathConsts.piecePlaceholderImage)}}>
                         
                         {
                             (piece?.tempernessLevel && piece?.tempernessLevel >= 1) ?
@@ -48,27 +48,12 @@ function PieceComponent({piece, jewels, onPress}: Props): React.JSX.Element {
 
                     </ImageBackground>
 
-                        {   
-                            jewels ?
-
-                            <View style = {piece_component_styles.jewels_wrapper}>
-                                <View style = {piece_component_styles.jewels_in_piece_wrapper}>
-                                    {   
-                                        jewels.map((jewel, index) => 
-                                        {
-                                            return(
-                                                <View key = {index} style = {piece_component_styles.jewel_in_piece_wrapper}>
-                                                    <JewelComponent jewel = {jewel}/>
-                                                </View>
-                                            )
-                                        }  
-                                        )
-                                    }
-                                </View>
-                            </View> 
-                            
+                        {
+                            piece && jewels ?
+                            <View style = {piece_component_styles.jewels_in_piece_wrapper}>
+                                <JewelsOfPiece jewels = {jewels}/>
+                            </View>
                             :
-
                             <></>
                         }
                 </View>

@@ -66,8 +66,12 @@ export const getPieceByIdAndRareness = async (db: SQLiteDatabase, pieceId: numbe
     }
 }
 
-export const getAllPiecesByTypeAndRareness = async (db: SQLiteDatabase, type: pieceTypes, piecesRareness: rareness): Promise<Piece[]> => {
+export const getAllPiecesByTypeAndRareness = async (db: SQLiteDatabase, type: pieceTypes, piecesRareness: rareness | undefined): Promise<Piece[]> => {
     try{
+        if(piecesRareness === undefined) {
+            piecesRareness = rareness.common
+        }
+
         if(type === "accessory1" || type === "accessory2" || type === "accessory3"){
             type = pieceTypes.accessory
         }

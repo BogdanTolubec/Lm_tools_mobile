@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { stats, statsShowInfo} from "../../../../../utills/types"
 import { Text, View } from "react-native";
 import stats_list from "./StatsList.styles";
-import shared_styles from "../../../../../utills/sharedStyles.styles";
+import shared_styles from "../../../../../utills/styles/sharedStyles.styles";
 
 type Props = {
     statsToShow: stats | undefined,

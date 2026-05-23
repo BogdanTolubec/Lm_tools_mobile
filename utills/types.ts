@@ -10,7 +10,7 @@ export type Piece = {
     type: pieceTypes,
     imagePath: string,
 
-    jewels: Array<jewel | undefined>,
+    jewels: (jewel | undefined)[],
 
     stats: stats,
 }

@@ -4,7 +4,7 @@ import piece_in_set from "./Piece.styles";
 import { IconPathConsts, ImgPathConsts } from "../../../../../utills/enums";
 import { setGearImageBackgroundByRareness } from "../../../../../utills/functions/images.functions";
 import { Piece } from "../../../../../utills/types";
-import shared_styles from "../../../../../utills/sharedStyles.styles";
+import shared_styles from "../../../../../utills/styles/sharedStyles.styles";
 import GoldFrame from "../../../../../Components/GoldFrame/GoldFrame";
 
 type Props = {

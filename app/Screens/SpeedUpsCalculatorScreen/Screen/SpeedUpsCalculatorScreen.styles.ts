@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
-import { typography } from "../../../../utills/typography";
-import { spacing } from "../../../../utills/sharedStyles.styles";
+import { typography } from "../../../../utills/styles/typography";
+import { spacing } from "../../../../utills/styles/sharedStyles.styles";
 
 const speed_ups_calculator_screen = StyleSheet.create({
     wrapper: {

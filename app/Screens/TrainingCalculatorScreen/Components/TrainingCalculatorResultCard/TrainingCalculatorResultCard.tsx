@@ -1,7 +1,7 @@
 import React from "react"
 import { View } from "react-native";
 import { Icon, Surface, Text } from "react-native-paper";
-import { iconSizes } from "../../../../../utills/sharedStyles.styles";
+import { iconSizes } from "../../../../../utills/styles/sharedStyles.styles";
 import { firstLetterCapitalizer, numbersUpToTrillionReducer, timeConverterFromSecondsToStringInDaysHoursMinutesFormat } from "../../../../../utills/functions/userFriendlyVisualisation.functions";
 import { IconPathConsts } from "../../../../../utills/enums";
 import training_calculator_result_card from "./TrainingCalculatorResultCard.styles";

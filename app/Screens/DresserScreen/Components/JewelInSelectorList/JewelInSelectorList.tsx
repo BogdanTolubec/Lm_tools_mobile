@@ -7,7 +7,7 @@ import { firstLetterCapitalizer } from "../../../../../utills/functions/userFrie
 import { setGearImageBackgroundByRareness } from "../../../../../utills/functions/images.functions";
 import ImageInWrapper from "../../../../../Components/ImageInWrapper/ImageInWrapper";
 import piece_in_selector_list from "../PieceInSelectorList/PieceInSelectorList.styles";
-import shared_styles from "../../../../../utills/sharedStyles.styles";
+import shared_styles from "../../../../../utills/styles/sharedStyles.styles";
 
 type Props = {
     gearSet: gearSet | undefined,

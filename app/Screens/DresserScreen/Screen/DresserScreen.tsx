@@ -8,15 +8,15 @@ import Swapper from "../../../../Components/Swapper/Swapper";
 import { gearSet, Piece} from "../../../../utills/types";
 import ModalComponent from "../../../../Components/ModalComponent/ModalComponent";
 import GearSetMenu from "../Components/GearSetMenu.modal/GearSetMenu";
-import { gearSetPlaceHolder } from "../../../../utills/consts";
+import { createGearSetPlaceholder } from "../../../../utills/functions/placeholdersCreationFunctions";
 import GearSetTitleChangeComponent from "../Components/GearSetTitleChange.modal/GearSetTitleChangeComponent";
 import PieceInfo from "../Components/PieceInfo.modal/PieceInfo";
 import GearSetStatsList from "../Components/GearSetStatsList.modal/GearSetStatsList";
-import shared_styles from "../../../../utills/sharedStyles.styles";
+import shared_styles from "../../../../utills/styles/sharedStyles.styles";
 
 function DresserScreen(): React.JSX.Element{
 
-    const [currentGearSet, setCurrentGearSet] = useState<gearSet>(gearSetPlaceHolder)
+    const [currentGearSet, setCurrentGearSet] = useState<gearSet>(createGearSetPlaceholder())
     const [allGearSets, setAllGearsSets] = useState<gearSet[]>([])
     const [gearSetCount, setGearSetCount] = useState<number>(allGearSets.length)
 

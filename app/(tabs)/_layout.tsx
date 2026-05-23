@@ -8,6 +8,7 @@ import TabIcon from "./TabIcon/TabIcon";
 import SpeedUpsCalculatorScreen from "../Screens/SpeedUpsCalculatorScreen/Screen/SpeedUpsCalculatorScreen";
 import ResearchesToolsScreen from "../Screens/ResearchesToolsScreen/Screen/ResearchesToolsScreen";
 import GearSetScreen from "../Screens/GearSetsScreen/Screen/GearSetScreen";
+import { navbarHeight } from "../../utills/styles/dimensions";
 
 function TabLayout(): React.JSX.Element {
 
@@ -24,7 +25,7 @@ function TabLayout(): React.JSX.Element {
                 backgroundColor: "#161622",
                 borderTopWidth: 1,
                 borderTopColor: "#232533",
-                height: 50,
+                height: navbarHeight,
                 display: "flex",
                 justifyContent: "center",
                 paddingTop: 18,

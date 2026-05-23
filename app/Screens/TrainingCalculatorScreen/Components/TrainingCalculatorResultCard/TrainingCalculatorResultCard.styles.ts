@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { colors } from "../../../../../utills/sharedStyles.styles";
-import { typography } from "../../../../../utills/typography";
+import { colors } from "../../../../../utills/styles/sharedStyles.styles";
+import { typography } from "../../../../../utills/styles/typography";
 
 const training_calculator_result_card = StyleSheet.create({
     wrapper: {

@@ -3,7 +3,7 @@ import { ActivityIndicator, StyleProp, View } from "react-native"
 import { ViewStyle } from "react-native"
 import loder_styles from "./Loader.styles"
 import { Text } from "react-native-paper"
-import { colors } from "../../utills/sharedStyles.styles"
+import { colors } from "../../utills/styles/sharedStyles.styles"
 
 
 type Props = {

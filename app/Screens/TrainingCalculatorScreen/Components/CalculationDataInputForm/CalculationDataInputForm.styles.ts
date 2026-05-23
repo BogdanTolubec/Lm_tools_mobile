@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { colors } from "../../../../../utills/sharedStyles.styles";
+import { colors } from "../../../../../utills/styles/sharedStyles.styles";
 
 const calculation_data_input_form = StyleSheet.create({
     wrapper: {
