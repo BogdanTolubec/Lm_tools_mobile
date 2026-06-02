@@ -25,7 +25,7 @@ const mainHandPlaceholder: Piece = {
     }
 }
 const helmetPlaceholder: Piece = {
-    piece_id: 2,
+    piece_id: 18,
     name: "placeholder",
     rareness: rareness.common,
     type: pieceTypes.helmet,
@@ -48,7 +48,7 @@ const helmetPlaceholder: Piece = {
     }
 }
 const platePlaceholder: Piece = {
-    piece_id: 3,
+    piece_id: 32,
     name: "placeholder",
     rareness: rareness.common,
     type: pieceTypes.plate,
@@ -71,7 +71,7 @@ const platePlaceholder: Piece = {
     }
 }
 const bootsPlaceholder: Piece = {
-    piece_id: 4,
+    piece_id: 46,
     name: "placeholder",
     rareness: rareness.common,
     type: pieceTypes.boots,
@@ -94,7 +94,7 @@ const bootsPlaceholder: Piece = {
     }
 }
 const secondHandPlaceholder: Piece = {
-    piece_id: 5,
+    piece_id: 63,
     name: "placeholder",
     rareness: rareness.common,
     type: pieceTypes.secondHand,
@@ -117,7 +117,7 @@ const secondHandPlaceholder: Piece = {
     }
 }
 const accesorry1Placeholder: Piece = {
-    piece_id: 6,
+    piece_id: 78,
     name: "placeholder",
     rareness: rareness.common,
     type: pieceTypes.accessory1,
@@ -140,7 +140,7 @@ const accesorry1Placeholder: Piece = {
     }
 }
 const accesorry2Placeholder: Piece = {
-    piece_id: 7,
+    piece_id: 78,
     name: "placeholder",
     rareness: rareness.common,
     type: pieceTypes.accessory2,
@@ -163,7 +163,7 @@ const accesorry2Placeholder: Piece = {
     }
 }
 const accesorry3Placeholder: Piece = {
-    piece_id: 8,
+    piece_id: 78,
     name: "placeholder",
     rareness: rareness.common,
     type: pieceTypes.accessory3,
