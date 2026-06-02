@@ -5,12 +5,16 @@ import { typography } from "../../../../../utills/styles/typography";
 const selected_piece_styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        alignContent: "center",
-        alignItems: "center",
-        justifyContent: "space-evenly",
         padding: 5,
 
         borderRadius: 14,
+    },
+
+    content_wrapper: {
+        flex: 1,
+        alignContent: "center",
+        alignItems: "center",
+        justifyContent: "space-evenly",
     },
 
     selected_piece_wrapper: {
@@ -27,6 +31,11 @@ const selected_piece_styles = StyleSheet.create({
         height: 50,
         width: "80%",
         overflow: "hidden",
+    },
+
+    save_button: {
+        height: "10%",
+        width: "60%",
     },
 
     temperness_level_text:{

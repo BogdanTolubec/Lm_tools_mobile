@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Piece } from "../../../../../utills/types";
-import { ActivityIndicator, Surface, Text } from "react-native-paper";
+import { Surface, Text } from "react-native-paper";
 import PieceComponent from "../PieceComponent/PieceComponent";
 import selected_piece_styles from "./SelectedPieceComponent.styles";
 import LinearGradient from "react-native-linear-gradient";
@@ -9,20 +9,25 @@ import ItemsCarousel from "../ItemsCarousel/ItemsCarousel";
 import Slider from "@react-native-community/slider";
 import { tempernessStatsAddByLevels } from "../../../../../utills/consts";
 import { rareness } from "../../../../../utills/enums";
+import Loader from "../../../../../Components/Loader/Loader";
+import ElevatedButton from "../../../../../Components/ElevatedButton/ElevatedButton";
+import { colors } from "../../../../../utills/styles/sharedStyles.styles";
 
 type Props = {
     selectedPiece: Piece,
     allPiecesArray: Array<Piece>,
     isPiecesLoading: boolean,
-    onPieceInCarouselPress: (piece: Piece) => void,
+    onPieceInSetChangeSave: (newPiece: Piece) => void,
 }
 
-function SelectedPieceComponent({selectedPiece, allPiecesArray, isPiecesLoading, onPieceInCarouselPress}: Props): React.JSX.Element {
+function SelectedPieceComponent({selectedPiece, allPiecesArray, isPiecesLoading, onPieceInSetChangeSave}: Props): React.JSX.Element {
 
     const [pieceInComponent, setPieceInComponent] = useState<Piece>(selectedPiece)
+    const [piecesInCarouselRareness, setPiecesInCarouselRareness] = useState<rareness>(selectedPiece.rareness)
 
     useEffect(() => {
         setPieceInComponent(selectedPiece)
+        setPiecesInCarouselRareness(selectedPiece.rareness)
     }, [selectedPiece])
 
     return(
@@ -31,11 +36,11 @@ function SelectedPieceComponent({selectedPiece, allPiecesArray, isPiecesLoading,
                 style = {selected_piece_styles.linearGradient}/>
             {
                 isPiecesLoading ?
-                <ActivityIndicator animating = {true}/>
+                <Loader/>
                 :
-                <View style = {{flex: 1}}>
+                <View style = {selected_piece_styles.content_wrapper}>
                     <View style = {selected_piece_styles.selected_piece_wrapper}>
-                        <PieceComponent piece = {pieceInComponent}/>
+                        <PieceComponent piece = {pieceInComponent} pieceType = {selectedPiece.type}/>
                     </View>
 
                     <View style = {selected_piece_styles.slider}>
@@ -46,11 +51,11 @@ function SelectedPieceComponent({selectedPiece, allPiecesArray, isPiecesLoading,
                             maximumValue = {tempernessStatsAddByLevels.length}
                             step = {1}
                             disabled = {
-                                selectedPiece?.rareness == rareness.common || 
-                                selectedPiece?.rareness == rareness.uncommon ||
-                                selectedPiece?.rareness == rareness.rare ||
-                                selectedPiece?.rareness == rareness.epic ||
-                                selectedPiece?.rareness == rareness.legendary
+                                piecesInCarouselRareness == rareness.common || 
+                                piecesInCarouselRareness == rareness.uncommon ||
+                                piecesInCarouselRareness == rareness.rare ||
+                                piecesInCarouselRareness == rareness.epic ||
+                                piecesInCarouselRareness == rareness.legendary
                             }
                             onValueChange = {(value) => {
                                 setPieceInComponent({...pieceInComponent, tempernessLevel: value})
@@ -62,9 +67,28 @@ function SelectedPieceComponent({selectedPiece, allPiecesArray, isPiecesLoading,
                         <ItemsCarousel<Piece> itemsArray = {allPiecesArray}  containerStyle = {{flex: 1}}>
                             {({item}) => 
                             <View style = {{height: 80, width: 80}}>
-                                <PieceComponent piece = {item} onPress = {() => onPieceInCarouselPress(item)}/>
+                                <PieceComponent piece = {item} 
+                                    onPress = {() => setPieceInComponent({
+                                        ...pieceInComponent,
+                                        piece_id: item.piece_id,
+                                        name: item.name,
+                                        imagePath: item.imagePath,
+                                        rareness: item.rareness,
+                                        tempernessLevel: 0,
+                                        stats: item.stats,
+                                        })}
+                                    pieceType = {selectedPiece.type}/>
                             </View>}
                         </ItemsCarousel>                    
+                    </View>
+
+                    
+
+                    <View style = {selected_piece_styles.save_button}>
+                        <ElevatedButton 
+                            onPress = {() => onPieceInSetChangeSave(pieceInComponent)} 
+                            colors = {[colors.bgPrimary, colors.surfaceRaised]}
+                            title = "Save"/>
                     </View>
                 </View>
             }

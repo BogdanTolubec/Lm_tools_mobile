@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const pieces_set_styles = StyleSheet.create({
     wrapper: {
-        flexGrow: 1,
+        flex: 1,
         flexDirection: "row",
         gap: 10,
 

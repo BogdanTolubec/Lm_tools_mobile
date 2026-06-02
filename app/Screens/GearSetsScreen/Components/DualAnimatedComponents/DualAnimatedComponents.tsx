@@ -1,7 +1,7 @@
-import React, { ReactNode, useRef } from "react"
+import React, { ReactNode, useState } from "react"
 import { Pressable, View } from "react-native"
-import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated"
-import { scheduleOnRN } from "react-native-worklets"
+import { MotiView } from "moti"
+import { Easing } from "react-native-reanimated"
 import { Text } from "react-native-paper"
 import dual_animated_component_styles from "./DualAnimatedComponents.styles"
 import { useAppDimensions } from "../../../../../utills/styles/dimensions"
@@ -11,109 +11,90 @@ type Props = {
         closeLeftPanel: () => void
     }) => ReactNode
 
-    rightComponent: ReactNode,
+    rightComponent: ReactNode
 }
 
-enum AnimationPhases {
-    leftClosed = 1,
-    rightClosed = 2,
-    leftOpening = 3,
-    rightOpening = 4,
-}
+type Panel = "left" | "right"
 
 function DualAnimatedComponent({leftComponent, rightComponent}: Props): React.JSX.Element {
     const { widthInPercentsToPixels } = useAppDimensions()
 
-    const animationPhaseRef = useRef<AnimationPhases>(AnimationPhases.rightClosed)
+    const arrowWidth = 30
+    const leftOpenedWidth = widthInPercentsToPixels(80)
+    const leftClosedWidth = 0
+    const rightOpenedWidth = widthInPercentsToPixels(75)
+    const rightClosedWidth = 0
 
-    const leftComponentWidth = useSharedValue(widthInPercentsToPixels(80))
-    const rightComponentWidth = useSharedValue(widthInPercentsToPixels(0))
+    const [openedPanel, setOpenedPanel] = useState<Panel>("left")
+    const [renderedPanel, setRenderedPanel] = useState<Panel>("left")
+    const [isAnimating, setIsAnimating] = useState(false)
 
-    const setAnimationPhase = (phase: AnimationPhases) => {
-        animationPhaseRef.current = phase
+    const leftWidth = openedPanel === "left" ? leftOpenedWidth : leftClosedWidth
+    const rightWidth = openedPanel === "right" ? rightOpenedWidth : rightClosedWidth
+
+    const transition = {
+        type: "timing" as const,
+        duration: 1500,
+        easing: Easing.out(Easing.cubic),
     }
 
-    const finishAnimation = (expectedPhase: AnimationPhases, finalPhase: AnimationPhases, finished: boolean) => {
-        if(!finished) return
-        if(animationPhaseRef.current !== expectedPhase) return
+    function openPanel(panel: Panel) {
+        if(isAnimating || openedPanel === panel) return
 
-        setAnimationPhase(finalPhase)
+        setRenderedPanel(panel)
+        setIsAnimating(true)
+        setOpenedPanel(panel)
     }
 
-    const openLeftPanel = () => {
-        if(
-            animationPhaseRef.current === AnimationPhases.leftOpening ||
-            animationPhaseRef.current === AnimationPhases.rightOpening ||
-            animationPhaseRef.current === AnimationPhases.rightClosed
-        ) 
-        return
-
-        setAnimationPhase(AnimationPhases.leftOpening)
-
-        rightComponentWidth.value = withTiming(widthInPercentsToPixels(0), {duration: 300,easing: Easing.out(Easing.cubic),})
-
-        leftComponentWidth.value = withTiming(widthInPercentsToPixels(80), {
-            duration: 300,
-            easing: Easing.bounce,
-        }, (finished) => {
-            scheduleOnRN(
-                finishAnimation,
-                AnimationPhases.leftOpening,
-                AnimationPhases.rightClosed,
-                Boolean(finished)
-            )
-        })
+    function openLeftPanel() {
+        openPanel("left")
     }
 
-    const closeLeftPanel = () => {
-        if(
-            animationPhaseRef.current === AnimationPhases.leftOpening ||
-            animationPhaseRef.current === AnimationPhases.rightOpening ||
-            animationPhaseRef.current === AnimationPhases.leftClosed
-        ) return
-
-        setAnimationPhase(AnimationPhases.rightOpening)
-
-        rightComponentWidth.value = withTiming(widthInPercentsToPixels(75), {duration: 300, easing: Easing.out(Easing.cubic),})
-
-        leftComponentWidth.value = withTiming(widthInPercentsToPixels(5), {
-            duration: 300,
-            easing: Easing.out(Easing.cubic),
-        }, (finished) => {
-            scheduleOnRN(
-                finishAnimation,
-                AnimationPhases.rightOpening,
-                AnimationPhases.leftClosed,
-                Boolean(finished)
-            )
-        })
+    function closeLeftPanel() {
+        openPanel("right")
     }
 
-    const leftPartAnimatedStyle = useAnimatedStyle(() => {
-        return {width: leftComponentWidth.value}
-    })
+    function onWidthAnimationEnd(key: string, finished: boolean) {
+        if(key !== "width" || !finished || !isAnimating) return
 
-    const rightPartAnimatedStyle = useAnimatedStyle(() => {
-        return {width: rightComponentWidth.value}
-    })
+        setIsAnimating(false)
+    }
 
     return(
-        <View style={dual_animated_component_styles.wrapper}>
-            <Animated.View style={[dual_animated_component_styles.left_part_wrapper, leftPartAnimatedStyle]}>
-                <View style={dual_animated_component_styles.left_component_wrapper}>
-                    {leftComponent({closeLeftPanel})}
+        <View style = {dual_animated_component_styles.wrapper}>
+            <MotiView
+                style = {[dual_animated_component_styles.left_part_wrapper, {width: leftWidth}]}
+                animate = {{width: leftWidth}}
+                transition = {transition}
+                onDidAnimate = {onWidthAnimationEnd}
+            >
+                <View
+                    pointerEvents = {renderedPanel === "left" && !isAnimating ? "auto" : "none"}
+                    style = {[dual_animated_component_styles.left_component_wrapper, {width: leftOpenedWidth}]}
+                >
+                    {renderedPanel === "left" ? leftComponent({closeLeftPanel}) : null}
                 </View>
+            </MotiView>
 
-                <Pressable style={dual_animated_component_styles.arrow_wrapper} onPress={openLeftPanel}>
-                    <Text style={dual_animated_component_styles.text}> {">"} </Text>
+            <MotiView
+                style = {[dual_animated_component_styles.right_part_wrapper, {width: rightWidth}]}
+                animate = {{width: rightWidth}}
+                transition = {transition}
+            >
+                <Pressable
+                    style = {dual_animated_component_styles.arrow_wrapper}
+                    onPress = {openLeftPanel}
+                    disabled = {openedPanel === "left" || isAnimating}
+                >
+                    <Text style = {dual_animated_component_styles.text}> {"<"} </Text>
                 </Pressable>
-            </Animated.View>
-
-            <Animated.View style={[dual_animated_component_styles.right_part_wrapper, rightPartAnimatedStyle]}>
-                <View style={dual_animated_component_styles.right_component_wrapper}>
-                    {rightComponent}
+                <View
+                    pointerEvents = {renderedPanel === "right" && !isAnimating ? "auto" : "none"}
+                    style = {[dual_animated_component_styles.right_component_wrapper, {width: rightOpenedWidth - arrowWidth}]}
+                >
+                    {renderedPanel === "right" ? rightComponent : null}
                 </View>
-            </Animated.View>
+            </MotiView>
         </View>
     )
 }

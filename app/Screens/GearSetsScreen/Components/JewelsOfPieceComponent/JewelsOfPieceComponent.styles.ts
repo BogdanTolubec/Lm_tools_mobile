@@ -8,10 +8,6 @@ const jewels_of_piece_styles = StyleSheet.create({
 
         justifyContent: "space-between",
         alignItems: "center",
-    
-        borderRadius: 10,
-
-        opacity: 0.9,
     },
 
     jewel_wrapper: {

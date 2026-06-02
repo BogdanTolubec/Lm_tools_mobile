@@ -1,34 +1,41 @@
-import React from "react";
-import { StyleSheet } from "react-native";
+import React from "react"
+import { StyleSheet } from "react-native"
 
 const dual_animated_component_styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         flexDirection: "row",
-        gap: 5
+        gap: 5,
+        overflow: "hidden",
+        justifyContent: "center",
     },
 
     left_part_wrapper: {
         height: "100%",
-        flexDirection: "row",
+        overflow: "hidden",
     },
 
     right_part_wrapper: {
         height: "100%",
+        flexDirection: "row-reverse",
+        overflow: "hidden",
+        position: "relative",
     },
 
     left_component_wrapper: {
-        flex: 1,
+        height: "100%",
     },
 
     right_component_wrapper: {
-        flex: 1,
+        height: "100%",
     },
 
     arrow_wrapper: {
-        alignSelf: "center",
-        height: 30,
-        width: 30,
+        position: "absolute",
+        top: "50%",
+        left: 0,
+        alignItems: "center",
+        justifyContent: "center",
     },
 
     text: {

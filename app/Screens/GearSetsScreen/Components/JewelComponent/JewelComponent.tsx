@@ -15,7 +15,7 @@ type Props = {
 function JewelComponent({jewel, onPress}: Props): React.JSX.Element {
 
     const jewel_rareness_background_image_path = jewel ? setGearImageBackgroundByRareness(jewel.rareness)
-        : ImgPathConsts.jewelsPlaceHolderImage
+        : ImgPathConsts.jewelsPlaceholderImage
 
     return (
         <View style = {{flex: 1}}>
@@ -36,8 +36,9 @@ function JewelComponent({jewel, onPress}: Props): React.JSX.Element {
                 :
 
                 <View style = {jewel_component_styles.wrapper}>
-                    <ImageBackground source = {{uri: ImgPathConsts.jewelsPlaceHolderImage}} 
-                        style = {shared_styles.img_in_view}/>
+                    <ImageBackground source = {{uri: ImgPathConsts.commonPieceBackgroundImage}} 
+                        style = {shared_styles.img_in_view}
+                        imageStyle = {{borderRadius: 5}}/>
                 </View>
             }
         </View>

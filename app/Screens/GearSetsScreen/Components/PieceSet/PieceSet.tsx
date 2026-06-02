@@ -19,37 +19,45 @@ function PieceSet({gearSet, onPiecePress}: Props): React.JSX.Element {
             <LinearGradient colors = {["#1b3453", "#254166", "#213b5d" ,"#1b3453"]} style = {pieces_set_styles.linear_gradient}/>
             <View style = {pieces_set_styles.column_wrapper}>
                 <PieceComponent 
-                    piece = {gearSet.mainHand} 
+                    piece = {gearSet.mainHand}
+                    pieceType = {pieceTypes.mainHand}
                     jewels = {gearSet.mainHand?.jewels || createJewelsOfPiecePlaceholder()} 
                     onPress = {() => onPiecePress(gearSet.mainHand || createPiecePlaceholderByType(pieceTypes.mainHand))}/>
                 <PieceComponent 
-                    piece = {gearSet.helmet} 
+                    piece = {gearSet.helmet}
+                    pieceType = {pieceTypes.helmet}
                     jewels = {gearSet.helmet?.jewels || createJewelsOfPiecePlaceholder()} 
                     onPress = {() => onPiecePress(gearSet.helmet || createPiecePlaceholderByType(pieceTypes.helmet))}/>
                 <PieceComponent
-                    piece = {gearSet.plate} 
+                    piece = {gearSet.plate}
+                    pieceType = {pieceTypes.plate}
                     jewels = {gearSet.plate?.jewels || createJewelsOfPiecePlaceholder()} 
                     onPress = {() => onPiecePress(gearSet.plate || createPiecePlaceholderByType(pieceTypes.plate))}/>
                 <PieceComponent 
-                    piece = {gearSet.boots} 
+                    piece = {gearSet.boots}
+                    pieceType = {pieceTypes.boots}
                     jewels = {gearSet.boots?.jewels || createJewelsOfPiecePlaceholder()} 
                     onPress = {() => onPiecePress(gearSet.boots || createPiecePlaceholderByType(pieceTypes.boots))}/>
             </View>
             <View style = {pieces_set_styles.column_wrapper}>
                 <PieceComponent 
-                    piece = {gearSet.secondHand} 
+                    piece = {gearSet.secondHand}
+                    pieceType = {pieceTypes.secondHand}
                     jewels = {gearSet.secondHand?.jewels || createJewelsOfPiecePlaceholder()} 
                     onPress = {() => onPiecePress(gearSet.secondHand || createPiecePlaceholderByType(pieceTypes.secondHand))}/>
                 <PieceComponent 
-                    piece = {gearSet.accessory1} 
+                    piece = {gearSet.accessory1}
+                    pieceType = {pieceTypes.accessory1}
                     jewels = {gearSet.accessory1?.jewels || createJewelsOfPiecePlaceholder()} 
                     onPress = {() => onPiecePress(gearSet.accessory1 || createPiecePlaceholderByType(pieceTypes.accessory1))}/>
                 <PieceComponent 
                     piece = {gearSet.accessory2} 
+                    pieceType = {pieceTypes.accessory2}
                     jewels = {gearSet.accessory2?.jewels || createJewelsOfPiecePlaceholder()} 
                     onPress = {() => onPiecePress(gearSet.accessory2 || createPiecePlaceholderByType(pieceTypes.accessory2))}/>
                 <PieceComponent 
-                    piece = {gearSet.accessory3} 
+                    piece = {gearSet.accessory3}
+                    pieceType = {pieceTypes.accessory3}
                     jewels = {gearSet.accessory3?.jewels || createJewelsOfPiecePlaceholder()} 
                     onPress = {() => onPiecePress(gearSet.accessory3 || createPiecePlaceholderByType(pieceTypes.accessory3))}/>
             </View>

@@ -15,19 +15,18 @@ const gear_set_screen_styles = StyleSheet.create({
         },
 
         piece_set_and_selected_piece_wrapper: {
-            width: "90%",
-            alignSelf: "center"
-        },
-
-        piece_set_wrapper: {
-            flex: 1,
+            height: "68%",
+            width: "100%",
+            alignSelf: "center",
+            flexDirection: "row",
         },
 
         selected_piece_wrapper: {
             flex: 1,
         },
 
-        stats_component_wrapper_full: {
+        stats_component_wrapper: {
+            height: "30%",
             width: "100%",
             alignContent: "center",
         },

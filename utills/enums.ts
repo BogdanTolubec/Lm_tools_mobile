@@ -104,10 +104,18 @@ export enum ImgPathConsts{
     legendaryPieceBackgroundImage = rootAssetsImgPath + "/utills/gears/legendary_piece_background.jpg",
     mythicPieceBackgroundImage = rootAssetsImgPath + "/utills/gears/mythic_piece_background.jpg",
     temperedPieceBackgroundImage = rootAssetsImgPath + "/utills/gears/tempered_piece_background.jpg",
-    
+
+    //placeholders    
     placeholderImage = rootAssetsImgPath + "/utills/no_image_placeholder.jpg",
-    jewelsPlaceHolderImage = rootAssetsImgPath + "/utills/no_juewels_placeholder.jpg",
-    piecePlaceholderImage = rootAssetsImgPath + "/utills/no_piece_placeholder.jpg",
+
+    mainHandPlaceholderImage = rootAssetsImgPath + "/utills/gears/no_main_hand_placeholder.png",
+    helmetPlaceholderImage = rootAssetsImgPath + "/utills/gears/no_helmet_placeholder.png",
+    platePlaceholderImage = rootAssetsImgPath + "/utills/gears/no_plate_placeholder.png",
+    bootsPlaceholderImage = rootAssetsImgPath + "/utills/gears/no_boots_placeholder.png",
+    secondHandPlaceholderImage = rootAssetsImgPath + "/utills/gears/no_second_hand_placeholder.png",
+    accesoryPlaceholderImage = rootAssetsImgPath + "/utills/gears/no_accesory_placeholder.png",
+
+    jewelsPlaceholderImage = rootAssetsImgPath + "/utills/gears/no_jewels_placeholder.png",
 }
 
 export enum IconPathConsts{

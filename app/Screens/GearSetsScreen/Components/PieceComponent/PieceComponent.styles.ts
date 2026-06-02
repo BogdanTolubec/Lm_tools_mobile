@@ -6,11 +6,11 @@ const piece_component_styles = StyleSheet.create({
         flex: 1,
 
         borderRadius: 33,
+        paddingHorizontal: 1
     },
 
     rareness_background_img: {
         flex: 1,
-        borderRadius: 20,
         justifyContent: "center",
         alignItems: "center",
     },
@@ -45,13 +45,12 @@ const piece_component_styles = StyleSheet.create({
 
     jewels_in_piece_wrapper: {
         height: "30%",
-        width: "100%",
+        width: "95%",
         flexDirection: "row",
 
         justifyContent: "space-between",
         alignItems: "center",
-    
-        borderRadius: 10,
+        alignSelf: "center",
 
         opacity: 0.9,
     },

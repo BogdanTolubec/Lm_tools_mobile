@@ -225,16 +225,16 @@ export const updateGearSet = async (db: SQLiteDatabase, gearSet: gearSet, title:
     ]
 
     const sqlQuerySelectJewelsByPieceIds: string = `SELECT mainHand_jewels, helmet_jewels,
-    plate_jewels, boots_jewels, secondHand_jewels, accessory1_jewels, accessory2_jewels, accessory3_jewels 
-    FROM ${tableNames.gear_sets}, ${tableNames.jewels_set} WHERE (gear_sets_id = ${gearSet.id}) 
-    AND (${tableNames.gear_sets}.jewels_set_id = ${tableNames.jewels_set}.jewels_set_id)`
+        plate_jewels, boots_jewels, secondHand_jewels, accessory1_jewels, accessory2_jewels, accessory3_jewels 
+        FROM ${tableNames.gear_sets}, ${tableNames.jewels_set} WHERE (gear_sets_id = ${gearSet.id}) 
+        AND (${tableNames.gear_sets}.jewels_set_id = ${tableNames.jewels_set}.jewels_set_id)`
 
     const queryData: ResultSet[] = await db.executeSql(sqlQuerySelectJewelsByPieceIds)
 
     const jewelsByPieceByGearSetIdsArray: number[] = [queryData[0].rows.item(0).mainHand_jewels, 
-    queryData[0].rows.item(0).helmet_jewels, queryData[0].rows.item(0).plate_jewels, queryData[0].rows.item(0).boots_jewels,
-    queryData[0].rows.item(0).secondHand_jewels, queryData[0].rows.item(0).accessory1_jewels,
-    queryData[0].rows.item(0).accessory2_jewels, queryData[0].rows.item(0).accessory3_jewels]
+        queryData[0].rows.item(0).helmet_jewels, queryData[0].rows.item(0).plate_jewels, queryData[0].rows.item(0).boots_jewels,
+        queryData[0].rows.item(0).secondHand_jewels, queryData[0].rows.item(0).accessory1_jewels,
+        queryData[0].rows.item(0).accessory2_jewels, queryData[0].rows.item(0).accessory3_jewels]
 
     for(let i = 0; i < gearSetPiecesCount; i++){
 
@@ -289,7 +289,7 @@ export const updateGearSet = async (db: SQLiteDatabase, gearSet: gearSet, title:
 
         await db.executeSql(sqlQueryUpdateTempernessLevelsSet)
         await db.executeSql(sqlQueryUpdateGearSetRareness)
-        await db.executeSql(sqlQueryUpdateGearSet)        
+        await db.executeSql(sqlQueryUpdateGearSet)  
 
     return true
 }
@@ -297,6 +297,55 @@ export const updateGearSet = async (db: SQLiteDatabase, gearSet: gearSet, title:
     catch(e){
         throw Error("Updating gear sets failed..." + JSON.stringify(e))
 }
+}
+
+export const updatePieceInGearSetByIdAndType = async (db: SQLiteDatabase, gearSetId: number, newPiece: Piece): Promise<boolean> => {
+    try{
+        if(!gearSetId) return false
+
+        // jewels update
+
+        const sqlQuerySelectJewelsByPieceInGearSet: string = `SELECT ${newPiece.type}_jewels 
+            FROM ${tableNames.gear_sets}, ${tableNames.jewels_set} WHERE (gear_sets_id = ${gearSetId}) 
+            AND (${tableNames.gear_sets}.jewels_set_id = ${tableNames.jewels_set}.jewels_set_id)` //getting jewels by piece type
+        
+        const jewelsSelectQueryData = await db.executeSql(sqlQuerySelectJewelsByPieceInGearSet)
+        const jewelsByPieceId = Object.values(jewelsSelectQueryData[0].rows.item(0))[0] //id of a set of a jewelsByPiece
+
+        const sqlQueryUpdateJewelsByPiece: string = `UPDATE ${tableNames.jewels_by_piece}
+            SET jewel_1 = ${newPiece?.jewels[0]?.jewel_id || null},
+            jewel_1_rareness = '${newPiece?.jewels[0]?.rareness || null}',
+            jewel_2 = ${newPiece?.jewels[1]?.jewel_id || null},
+            jewel_2_rareness = '${newPiece?.jewels[1]?.rareness || null}',
+            jewel_3 = ${newPiece?.jewels[2]?.jewel_id || null},
+            jewel_3_rareness = '${newPiece?.jewels[2]?.rareness || null}'
+            WHERE jewels_by_piece_id = ${jewelsByPieceId}`
+        
+        await db.executeSql(sqlQueryUpdateJewelsByPiece)
+
+        const sqlQueryUpdatePieceInSetRareness: string = `UPDATE ${tableNames.gear_set_pieces_rareness}
+            SET ${newPiece.type}_rareness = '${newPiece.rareness}'
+            WHERE ${tableNames.gear_set_pieces_rareness}.gear_set_piece_rareness_id = (SELECT gear_set_pieces_rareness_id
+            FROM ${tableNames.gear_sets} WHERE ${tableNames.gear_sets}.gear_sets_id = ${gearSetId})` //rareness update for piece
+        
+        const sqlQueryUpdateTempernessLevelsOfPieceOfSet: string = `UPDATE ${tableNames.temperness_levels_set}
+            SET ${newPiece.type}_temperness_level = ${newPiece.tempernessLevel}
+            WHERE ${tableNames.temperness_levels_set}.temperness_levels_set_id = (SELECT temperness_levels_set_id
+            FROM ${tableNames.gear_sets} WHERE gear_sets_id = ${gearSetId})`
+
+        const sqlQueryUpdateGearSet: string = `UPDATE ${tableNames.gear_sets}
+            SET ${newPiece.type} = ${newPiece.piece_id}
+            WHERE ${tableNames.gear_sets}.gear_sets_id = ${gearSetId}`
+
+        await db.executeSql(sqlQueryUpdateTempernessLevelsOfPieceOfSet)
+        await db.executeSql(sqlQueryUpdatePieceInSetRareness)
+        await db.executeSql(sqlQueryUpdateGearSet)
+
+        return true
+        
+    } catch(e){
+        throw Error(`Updating piece in gear set: ${gearSetId} failed... ` + JSON.stringify(e))
+    }
 }
 
 export const deleteGearSetById = async (db: SQLiteDatabase, gearSetId: number | undefined): Promise<boolean> => {
@@ -428,3 +477,89 @@ export const getAllJewelsByRareness = async (db: SQLiteDatabase, jewelsRareness:
         throw Error("Jewels by rareness loading failed... " + JSON.stringify(e))
     }
 }
+
+/*
+export const updateGearSet = async (db: SQLiteDatabase, gearSet: gearSet, title: string | null): Promise<boolean> => {
+    try{
+
+    // jewels update
+    const jewelsByGearSet: Array<Array<jewel | undefined> | undefined> = [gearSet.mainHand?.jewels, gearSet.helmet?.jewels,
+        gearSet.plate?.jewels, gearSet.boots?.jewels, gearSet.secondHand?.jewels, 
+        gearSet.accessory1?.jewels, gearSet.accessory2?.jewels, gearSet.accessory3?.jewels
+    ]
+
+    const sqlQuerySelectJewelsByPieceIds: string = `SELECT mainHand_jewels, helmet_jewels,
+        plate_jewels, boots_jewels, secondHand_jewels, accessory1_jewels, accessory2_jewels, accessory3_jewels 
+        FROM ${tableNames.gear_sets}, ${tableNames.jewels_set} WHERE (gear_sets_id = ${gearSet.id}) 
+        AND (${tableNames.gear_sets}.jewels_set_id = ${tableNames.jewels_set}.jewels_set_id)`
+
+    const queryData: ResultSet[] = await db.executeSql(sqlQuerySelectJewelsByPieceIds)
+
+    const jewelsByPieceByGearSetIdsArray: number[] = [queryData[0].rows.item(0).mainHand_jewels, 
+        queryData[0].rows.item(0).helmet_jewels, queryData[0].rows.item(0).plate_jewels, queryData[0].rows.item(0).boots_jewels,
+        queryData[0].rows.item(0).secondHand_jewels, queryData[0].rows.item(0).accessory1_jewels,
+        queryData[0].rows.item(0).accessory2_jewels, queryData[0].rows.item(0).accessory3_jewels]
+
+    for(let i = 0; i < gearSetPiecesCount; i++){
+
+    let sqlQueryUpdateJewelsByPiece: string = `UPDATE ${tableNames.jewels_by_piece}
+        SET jewel_1 = ${jewelsByGearSet[i]?.[0]?.jewel_id || null},
+        jewel_1_rareness = '${jewelsByGearSet[i]?.[0]?.rareness || null}',
+        jewel_2 = ${jewelsByGearSet[i]?.[1]?.jewel_id || null},
+        jewel_2_rareness = '${jewelsByGearSet[i]?.[1]?.rareness || null}',
+        jewel_3 = ${jewelsByGearSet[i]?.[2]?.jewel_id || null},
+        jewel_3_rareness = '${jewelsByGearSet[i]?.[2]?.rareness || null}'
+        WHERE jewels_by_piece_id = ${jewelsByPieceByGearSetIdsArray[i]}`
+    
+        await db.executeSql(sqlQueryUpdateJewelsByPiece)
+    }
+
+    //pieces update
+    const sqlQueryUpdateGearSetRareness: string = `UPDATE ${tableNames.gear_set_pieces_rareness}
+            SET mainHand_rareness = ${gearSet.mainHand?.rareness ? `'${gearSet.mainHand?.rareness}'` : null},
+            helmet_rareness = ${gearSet.helmet?.rareness ? `'${gearSet.helmet?.rareness}'` : null},
+            plate_rareness = ${gearSet.plate?.rareness ? `'${gearSet.plate?.rareness}'` : null},
+            boots_rareness = ${gearSet.boots?.rareness ? `'${gearSet.boots?.rareness}'` : null},
+            secondHand_rareness = ${gearSet.secondHand?.rareness? `'${gearSet.secondHand?.rareness}'` : null},
+            accessory1_rareness = ${gearSet.accessory1?.rareness ? `'${gearSet.accessory1?.rareness}'` : null},
+            accessory2_rareness = ${gearSet.accessory2?.rareness ? `'${gearSet.accessory2?.rareness}'` : null},
+            accessory3_rareness = ${gearSet.accessory3?.rareness ? `'${gearSet.accessory3?.rareness}'` : null}
+            WHERE ${tableNames.gear_set_pieces_rareness}.gear_set_piece_rareness_id = (SELECT gear_set_pieces_rareness_id
+            FROM ${tableNames.gear_sets} WHERE ${tableNames.gear_sets}.gear_sets_id = ${gearSet.id})`
+    
+    const sqlQueryUpdateGearSet: string = `UPDATE ${tableNames.gear_sets}
+            SET mainHand = ${gearSet.mainHand?.piece_id || null},
+                helmet = ${gearSet.helmet?.piece_id || null},
+                plate = ${gearSet.plate?.piece_id || null},
+                boots = ${gearSet.boots?.piece_id || null},
+                secondHand = ${gearSet.secondHand?.piece_id || null},
+                accessory1 = ${gearSet.accessory1?.piece_id || null},
+                accessory2 = ${gearSet.accessory2?.piece_id || null},
+                accessory3 = ${gearSet.accessory3?.piece_id || null},
+                title = '${title}'
+            WHERE ${tableNames.gear_sets}.gear_sets_id = ${gearSet.id}`
+
+    const sqlQueryUpdateTempernessLevelsSet: string = `UPDATE ${tableNames.temperness_levels_set}
+            SET mainHand_temperness_level = ${gearSet.mainHand ? gearSet.mainHand.tempernessLevel : 0},
+            helmet_temperness_level = ${gearSet.helmet ? gearSet.helmet.tempernessLevel : 0},
+            plate_temperness_level = ${gearSet.plate ? gearSet.plate.tempernessLevel : 0},
+            boots_temperness_level = ${gearSet.boots ? gearSet.boots.tempernessLevel : 0},
+            secondHand_temperness_level = ${gearSet.secondHand ? gearSet.secondHand.tempernessLevel : 0},
+            accessory1_temperness_level = ${gearSet.accessory1 ? gearSet.accessory1.tempernessLevel : 0},
+            accessory2_temperness_level = ${gearSet.accessory2 ? gearSet.accessory2.tempernessLevel : 0},
+            accessory3_temperness_level = ${gearSet.accessory3 ? gearSet.accessory3.tempernessLevel : 0}
+            WHERE ${tableNames.temperness_levels_set}.temperness_levels_set_id = (SELECT temperness_levels_set_id
+            FROM ${tableNames.gear_sets} WHERE gear_sets_id = ${gearSet.id})`
+
+        await db.executeSql(sqlQueryUpdateTempernessLevelsSet)
+        await db.executeSql(sqlQueryUpdateGearSetRareness)
+        await db.executeSql(sqlQueryUpdateGearSet)  
+
+    return true
+}
+
+    catch(e){
+        throw Error("Updating gear sets failed..." + JSON.stringify(e))
+}
+}
+*/
