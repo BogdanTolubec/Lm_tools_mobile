@@ -18,13 +18,13 @@ const selected_piece_styles = StyleSheet.create({
     },
 
     selected_piece_wrapper: {
-        height: "20%",
+        height: 90,
         width: "50%",
     },
 
     carousel: {
         width: "100%",
-        height: "20%",
+        height: 110,
     },
 
     slider: {
@@ -34,13 +34,23 @@ const selected_piece_styles = StyleSheet.create({
     },
 
     save_button: {
-        height: "10%",
+        height: 50,
         width: "60%",
     },
 
     temperness_level_text:{
         fontSize: typography.fontSize.lg,
         textAlign: "center"
+    },
+
+    choose_rareness_labels_wrapper: {
+        height: 30,
+        width: "100%",
+    },
+
+    jewels_wrapper: {
+        height: 60,
+        width: "100%"
     },
 
     linearGradient : {

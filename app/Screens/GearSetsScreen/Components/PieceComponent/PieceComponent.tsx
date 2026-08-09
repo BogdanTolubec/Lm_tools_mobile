@@ -1,8 +1,8 @@
 import React from "react";
 import { ImageBackground, Pressable, Text, View } from "react-native";
-import { IconPathConsts, ImgPathConsts, pieceTypes } from "../../../../../utills/enums";
+import { IconPathConsts, ImgPathConsts, pieceTypesClient, pieceTypesDb } from "../../../../../utills/enums";
 import { setGearImageBackgroundByRareness } from "../../../../../utills/functions/images.functions";
-import { jewel, Piece } from "../../../../../utills/types";
+import { jewel, PieceInSet, RawPiece } from "../../../../../utills/types";
 import shared_styles from "../../../../../utills/styles/sharedStyles.styles";
 import GoldFrame from "../../../../../Components/GoldFrame/GoldFrame";
 import piece_component_styles from "./PieceComponent.styles";
@@ -10,8 +10,8 @@ import JewelsOfPiece from "../JewelsOfPieceComponent/JewelsOfPieceComponent";
 import { choosePieceImageByType } from "../../../../../utills/functions/utils.functions";
 
 type Props = {
-    piece: Piece | undefined,
-    pieceType: pieceTypes,
+    piece: PieceInSet | undefined,
+    pieceType: pieceTypesClient,
     onPress?: () => void,
     jewels?: (jewel | undefined)[],
 }

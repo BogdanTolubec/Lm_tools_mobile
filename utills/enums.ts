@@ -48,13 +48,21 @@ export enum armyTiers {
     tier4 = "T4",
 }
 
-export enum pieceTypes {
+export enum pieceTypesDb {
     mainHand = "mainHand",
     helmet = "helmet",
     plate = "plate",
     boots = "boots",
     secondHand = "secondHand",
     accessory = "accessory",
+}
+
+export enum pieceTypesClient {
+    mainHand = "mainHand",
+    helmet = "helmet",
+    plate = "plate",
+    boots = "boots",
+    secondHand = "secondHand",
     accessory1 = "accessory1",
     accessory2 = "accessory2",
     accessory3 = "accessory3",

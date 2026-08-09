@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { ImageBackground, View } from "react-native";
 import gear_set_screen_styles from "./GearSetScreen.styles";
 import shared_styles from "../../../../utills/styles/sharedStyles.styles";
-import { ImgPathConsts, pieceTypes } from "../../../../utills/enums";
+import { ImgPathConsts, pieceTypesClient, rareness } from "../../../../utills/enums";
 import { createGearSetPlaceholder, createPiecePlaceholderByType } from "../../../../utills/functions/placeholdersCreationFunctions";
-import { gearSet, Piece } from "../../../../utills/types";
+import { gearSet, PieceInSet, RawPiece } from "../../../../utills/types";
 import { getDBConnection, getALLGearSets, getAllPiecesByTypeAndRareness, updatePieceInGearSetByIdAndType } from "../../../../utills/functions/db-service";
 import Loader from "../../../../Components/Loader/Loader";
 import PieceSet from "../Components/PieceSet/PieceSet";
@@ -19,10 +19,12 @@ function GearSetScreen(): React.JSX.Element {
     const [isPiecesForCarouselLoading, setIsPiecesForCarouselLoading] = useState<boolean>(false)
 
     const [gearSetSelected, setGearSetSelected] = useState<gearSet>(createGearSetPlaceholder())
-    const [selectedPiece, setSelectedPiece] = useState<Piece>(createPiecePlaceholderByType(pieceTypes.mainHand))
+    const [selectedPiece, setSelectedPiece] = useState<PieceInSet>(createPiecePlaceholderByType(pieceTypesClient.mainHand))
     
     const [allGearSets, setAllGearsSets] = useState<gearSet[]>([])
-    const [allPiecesAvailable, setAllpiecesAvailable] = useState<Piece[]>([])
+
+    const [piecesForCarousel, setPiecesForCarousel] = useState<RawPiece[]>([])
+    const [carouselPiecesRareness, setCarouselPiecesRareness] = useState<rareness>(selectedPiece.rareness)
 
 
     useEffect(() => {
@@ -52,8 +54,8 @@ function GearSetScreen(): React.JSX.Element {
             try{
                 const db = await getDBConnection()
 
-                await getAllPiecesByTypeAndRareness(db, selectedPiece?.type, selectedPiece?.rareness).then((data: Piece[]) => {
-                    setAllpiecesAvailable(data)
+                await getAllPiecesByTypeAndRareness(db, selectedPiece?.type, carouselPiecesRareness).then((data: RawPiece[]) => {
+                    setPiecesForCarousel(data)
                 })
             } catch(e){
                 console.error(e)
@@ -62,13 +64,17 @@ function GearSetScreen(): React.JSX.Element {
 
         getAllPieces().finally(() => setIsPiecesForCarouselLoading(false))
         
-    }, [selectedPiece])
+    }, [selectedPiece, carouselPiecesRareness])
 
-    function onPieceInGearSetPressHandler(piece: Piece) {
+    function onPieceInGearSetPressHandler(piece: PieceInSet) {
         setSelectedPiece(piece)
     }
 
-    function onPieceInSetChangeSaveHandler(newPiece: Piece) {
+    function onChooseRarenessLabelPressHandler(rareness: rareness){
+        setCarouselPiecesRareness(rareness)
+    }
+
+    function onPieceInSetChangeSaveHandler(newPiece: PieceInSet) {
         try{
             const updatePiece = async () =>{
                 const db = await getDBConnection()
@@ -114,9 +120,11 @@ function GearSetScreen(): React.JSX.Element {
                                     rightComponent = {
                                         <SelectedPieceComponent 
                                             selectedPiece = {selectedPiece} 
-                                            allPiecesArray = {allPiecesAvailable}
+                                            allPiecesArray = {piecesForCarousel}
                                             isPiecesLoading = {isPiecesForCarouselLoading}
-                                            onPieceInSetChangeSave = {onPieceInSetChangeSaveHandler}/>
+                                            carouselPiecesRareness = {carouselPiecesRareness}
+                                            onPieceInSetChangeSave = {onPieceInSetChangeSaveHandler}
+                                            onChooseRarenessLabelPressHandler = {onChooseRarenessLabelPressHandler}/>
                                     }
                                 />
                             </View> 

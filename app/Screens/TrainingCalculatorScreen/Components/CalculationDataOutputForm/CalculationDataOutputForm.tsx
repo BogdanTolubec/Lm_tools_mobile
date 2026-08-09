@@ -5,7 +5,6 @@ import TrainingCalculatorResultCard from "../TrainingCalculatorResultCard/Traini
 import { Text } from "react-native-paper";
 import { trainingCalculatorMode } from "../ModeSwitch/ModeSwitch";
 import { resultCardsTypes } from "../../../../../utills/functions/resourcesCalculationFunctions";
-import { calculationResultsPlaceholder } from "../../../../../utills/consts";
 
 type Props = {
     calculationResults: Record<resultCardsTypes, number>, 

@@ -1,5 +1,5 @@
 import { statsObject, tempernessStatsAddByLevels } from "../consts";
-import { gearSet, jewel, Piece, stats, statsShowInfo } from "../types";
+import { gearSet, jewel, PieceInSet, stats, statsShowInfo } from "../types";
 
 export function calculateGearSetStats(gearSet: gearSet | undefined): stats{
 
@@ -24,7 +24,7 @@ export function calculateGearSetStats(gearSet: gearSet | undefined): stats{
     if(!gearSet)
         return calculatedStats
 
-    const allPieces: Array<Piece | undefined> = [gearSet.mainHand, gearSet.helmet, gearSet.plate, gearSet.boots,
+    const allPieces: Array<PieceInSet | undefined> = [gearSet.mainHand, gearSet.helmet, gearSet.plate, gearSet.boots,
         gearSet.secondHand, gearSet.accessory1, gearSet.accessory2, gearSet.accessory3] // to avoid id and title props
 
     allPieces.forEach((piece) => {
@@ -44,21 +44,21 @@ function addStats(stats1: stats | undefined, stats2: stats | undefined): stats{ 
 
     else if(stats1 && stats2){
         return {
-            armyAtk: (stats1.armyAtk ? stats1.armyAtk : 0) + (stats2.armyAtk ? stats2.armyAtk : 0),
-            armyHp: (stats1.armyHp ? stats1.armyHp : 0) + (stats2.armyHp ? stats2.armyHp : 0),
-            armyDeff: (stats1.armyDeff ? stats1.armyDeff : 0) + (stats2.armyDeff ? stats2.armyDeff : 0),
+            armyAtk: (stats1.armyAtk ?? 0) + (stats2.armyAtk ?? 0),
+            armyHp: (stats1.armyHp ?? 0) + (stats2.armyHp ?? 0),
+            armyDeff: (stats1.armyDeff ?? 0) + (stats2.armyDeff ?? 0),
 
-            infantryAtk: (stats1.infantryAtk ? stats1.infantryAtk : 0) + (stats2.infantryAtk ? stats2.infantryAtk : 0),
-            infantryHp: (stats1.infantryHp ? stats1.infantryHp : 0) + (stats2.infantryHp ? stats2.infantryHp : 0),
-            infantryDeff: (stats1.infantryDeff ? stats1.infantryDeff : 0) + (stats2.infantryDeff ? stats2.infantryDeff : 0),
+            infantryAtk: (stats1.infantryAtk ?? 0) + (stats2.infantryAtk ?? 0),
+            infantryHp: (stats1.infantryHp ?? 0) + (stats2.infantryHp ?? 0),
+            infantryDeff: (stats1.infantryDeff ?? 0) + (stats2.infantryDeff ?? 0),
             
-            rangedAtk: (stats1.rangedAtk ? stats1.rangedAtk : 0) + (stats2.rangedAtk ? stats2.rangedAtk : 0),
-            rangedHp: (stats1.rangedHp ? stats1.rangedHp: 0) + (stats2.rangedHp ? stats2.rangedHp : 0),
-            rangedDeff: (stats1.rangedDeff ? stats1.rangedDeff : 0) + (stats2.rangedDeff ? stats2.rangedDeff: 0),
+            rangedAtk: (stats1.rangedAtk ?? 0) + (stats2.rangedAtk ?? 0),
+            rangedHp: (stats1.rangedHp ?? 0) + (stats2.rangedHp ?? 0),
+            rangedDeff: (stats1.rangedDeff ?? 0) + (stats2.rangedDeff ?? 0),
 
-            cavalryAtk: (stats1.cavalryAtk ? stats1.cavalryAtk : 0) + (stats2.cavalryAtk ? stats2.cavalryAtk : 0),
-            cavalryHp: (stats1.cavalryHp ? stats1.cavalryHp : 0) + (stats2.cavalryHp ? stats2.cavalryHp : 0),
-            cavalryDeff: (stats1.cavalryDeff ? stats1.cavalryDeff : 0) + (stats2.cavalryDeff ? stats2.cavalryDeff : 0),
+            cavalryAtk: (stats1.cavalryAtk ?? 0) + (stats2.cavalryAtk ?? 0),
+            cavalryHp: (stats1.cavalryHp ?? 0) + (stats2.cavalryHp ?? 0),
+            cavalryDeff: (stats1.cavalryDeff ?? 0) + (stats2.cavalryDeff ?? 0),
         }
     }
 
@@ -168,9 +168,12 @@ export function calculateTempernesStatsByLevel(pieceStats: stats, tempernessLeve
 
     for(keyOfPieceStats in pieceStats){
         if(pieceStats[keyOfPieceStats] !== null){
-            newPieceStats[keyOfPieceStats] = Number((Math.round(
-                Number(pieceStats[keyOfPieceStats]) * (1 + tempernessStatsAddByLevels[tempernessLevel - 1])
-                    * 100) / 100).toFixed(2)) 
+            newPieceStats[keyOfPieceStats] = Number((
+                Math.round(Number(pieceStats[keyOfPieceStats]) 
+                * 
+                (1 + tempernessStatsAddByLevels[tempernessLevel - 1])* 100)
+                /
+                100).toFixed(2)) 
         }
     }
 

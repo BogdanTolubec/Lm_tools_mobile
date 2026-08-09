@@ -1,10 +1,8 @@
 import React from "react"
-import { Image, Pressable, Text, TouchableHighlight, View } from "react-native"
+import { Image, Pressable, Text, View } from "react-native"
 import check_label from "./CheckLabel.styles"
 import { armyTiers, armyTypes } from "../../../../../utills/enums"
-import { colors } from "../../../../../utills/styles/sharedStyles.styles"
 import check_label_styles from "./CheckLabel.styles"
-import { Icon } from "react-native-paper"
 import LinearGradient from "react-native-linear-gradient"
 import GoldFrame from "../../../../../Components/GoldFrame/GoldFrame"
 

@@ -1,13 +1,13 @@
-import { ImgPathConsts, pieceTypes, rareness } from "../enums"
-import { gearSet, jewel, Piece } from "../types"
+import { ImgPathConsts, pieceTypesClient, rareness } from "../enums"
+import { gearSet, jewel, PieceInSet } from "../types"
 
-const mainHandPlaceholder: Piece = {
+const mainHandPlaceholder: PieceInSet = {
     piece_id: 1,
     name: "placeholder",
     rareness: rareness.common,
-    type: pieceTypes.mainHand,
+    type: pieceTypesClient.mainHand,
     tempernessLevel: 0,
-    imagePath: ImgPathConsts.piecePlaceholderImage,
+    imagePath: ImgPathConsts.mainHandPlaceholderImage,
     jewels: [,,],
     stats: {
         armyAtk: 0,
@@ -24,13 +24,13 @@ const mainHandPlaceholder: Piece = {
         cavalryHp: 0,
     }
 }
-const helmetPlaceholder: Piece = {
+const helmetPlaceholder: PieceInSet = {
     piece_id: 18,
     name: "placeholder",
     rareness: rareness.common,
-    type: pieceTypes.helmet,
+    type: pieceTypesClient.helmet,
     tempernessLevel: 0,
-    imagePath: ImgPathConsts.piecePlaceholderImage,
+    imagePath: ImgPathConsts.helmetPlaceholderImage,
     jewels: [,,],
     stats: {
         armyAtk: 0,
@@ -47,13 +47,13 @@ const helmetPlaceholder: Piece = {
         cavalryHp: 0,
     }
 }
-const platePlaceholder: Piece = {
+const platePlaceholder: PieceInSet = {
     piece_id: 32,
     name: "placeholder",
     rareness: rareness.common,
-    type: pieceTypes.plate,
+    type: pieceTypesClient.plate,
     tempernessLevel: 0,
-    imagePath: ImgPathConsts.piecePlaceholderImage,
+    imagePath: ImgPathConsts.platePlaceholderImage,
     jewels: [,,],
     stats: {
         armyAtk: 0,
@@ -70,13 +70,13 @@ const platePlaceholder: Piece = {
         cavalryHp: 0,
     }
 }
-const bootsPlaceholder: Piece = {
+const bootsPlaceholder: PieceInSet = {
     piece_id: 46,
     name: "placeholder",
     rareness: rareness.common,
-    type: pieceTypes.boots,
+    type: pieceTypesClient.boots,
     tempernessLevel: 0,
-    imagePath: ImgPathConsts.piecePlaceholderImage,
+    imagePath: ImgPathConsts.bootsPlaceholderImage,
     jewels: [,,],
     stats: {
         armyAtk: 0,
@@ -93,13 +93,13 @@ const bootsPlaceholder: Piece = {
         cavalryHp: 0,
     }
 }
-const secondHandPlaceholder: Piece = {
+const secondHandPlaceholder: PieceInSet = {
     piece_id: 63,
     name: "placeholder",
     rareness: rareness.common,
-    type: pieceTypes.secondHand,
+    type: pieceTypesClient.secondHand,
     tempernessLevel: 0,
-    imagePath: ImgPathConsts.piecePlaceholderImage,
+    imagePath: ImgPathConsts.secondHandPlaceholderImage,
     jewels: [,,],
     stats: {
         armyAtk: 0,
@@ -116,13 +116,13 @@ const secondHandPlaceholder: Piece = {
         cavalryHp: 0,
     }
 }
-const accesorry1Placeholder: Piece = {
+const accesorry1Placeholder: PieceInSet = {
     piece_id: 78,
     name: "placeholder",
     rareness: rareness.common,
-    type: pieceTypes.accessory1,
+    type: pieceTypesClient.accessory1,
     tempernessLevel: 0,
-    imagePath: ImgPathConsts.piecePlaceholderImage,
+    imagePath: ImgPathConsts.accesoryPlaceholderImage,
     jewels: [,,],
     stats: {
         armyAtk: 0,
@@ -139,13 +139,13 @@ const accesorry1Placeholder: Piece = {
         cavalryHp: 0,
     }
 }
-const accesorry2Placeholder: Piece = {
+const accesorry2Placeholder: PieceInSet = {
     piece_id: 78,
     name: "placeholder",
     rareness: rareness.common,
-    type: pieceTypes.accessory2,
+    type: pieceTypesClient.accessory2,
     tempernessLevel: 0,
-    imagePath: ImgPathConsts.piecePlaceholderImage,
+    imagePath: ImgPathConsts.accesoryPlaceholderImage,
     jewels: [,,],
     stats: {
         armyAtk: 0,
@@ -162,13 +162,13 @@ const accesorry2Placeholder: Piece = {
         cavalryHp: 0,
     }
 }
-const accesorry3Placeholder: Piece = {
+const accesorry3Placeholder: PieceInSet = {
     piece_id: 78,
     name: "placeholder",
     rareness: rareness.common,
-    type: pieceTypes.accessory3,
+    type: pieceTypesClient.accessory3,
     tempernessLevel: 0,
-    imagePath: ImgPathConsts.piecePlaceholderImage,
+    imagePath: ImgPathConsts.accesoryPlaceholderImage,
     jewels: [,,],
     stats: {
         armyAtk: 0,
@@ -201,23 +201,23 @@ export function createGearSetPlaceholder(): gearSet {
     }
 }
 
-export function createPiecePlaceholderByType(type: pieceTypes): Piece{
+export function createPiecePlaceholderByType(type: pieceTypesClient): PieceInSet{
     switch(type){
-        case pieceTypes.mainHand: return mainHandPlaceholder
+        case pieceTypesClient.mainHand: return mainHandPlaceholder
 
-        case pieceTypes.helmet: return helmetPlaceholder
+        case pieceTypesClient.helmet: return helmetPlaceholder
 
-        case pieceTypes.plate: return platePlaceholder
+        case pieceTypesClient.plate: return platePlaceholder
 
-        case pieceTypes.boots: return bootsPlaceholder
+        case pieceTypesClient.boots: return bootsPlaceholder
 
-        case pieceTypes.secondHand: return secondHandPlaceholder
+        case pieceTypesClient.secondHand: return secondHandPlaceholder
 
-        case pieceTypes.accessory1: return accesorry1Placeholder
+        case pieceTypesClient.accessory1: return accesorry1Placeholder
 
-        case pieceTypes.accessory2: return accesorry2Placeholder
+        case pieceTypesClient.accessory2: return accesorry2Placeholder
 
-        case pieceTypes.accessory3: return accesorry3Placeholder
+        case pieceTypesClient.accessory3: return accesorry3Placeholder
 
         default: return mainHandPlaceholder
     }

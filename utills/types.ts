@@ -1,13 +1,28 @@
-import { pieceTypes, rareness } from "./enums"
+import { pieceTypesDb, pieceTypesClient, rareness } from "./enums"
 
-export type Piece = {
+export type RawPiece = {
     piece_id: number,
     name: string,
 
     rareness: rareness,
     tempernessLevel: number,
 
-    type: pieceTypes,
+    type: pieceTypesDb,
+    imagePath: string,
+
+    jewels: (jewel | undefined)[],
+
+    stats: stats,
+}
+
+export type PieceInSet = {
+    piece_id: number,
+    name: string,
+
+    rareness: rareness,
+    tempernessLevel: number,
+
+    type: pieceTypesClient,
     imagePath: string,
 
     jewels: (jewel | undefined)[],
@@ -36,14 +51,14 @@ export type stats = {
 export type gearSet = {
     id: number,
     title: string | null,
-    mainHand: Piece | undefined,
-    helmet: Piece | undefined,
-    plate: Piece | undefined,
-    boots: Piece | undefined,
-    secondHand: Piece | undefined,
-    accessory1: Piece | undefined,
-    accessory2: Piece | undefined,
-    accessory3: Piece | undefined,
+    mainHand: PieceInSet | undefined,
+    helmet: PieceInSet | undefined,
+    plate: PieceInSet | undefined,
+    boots: PieceInSet | undefined,
+    secondHand: PieceInSet | undefined,
+    accessory1: PieceInSet | undefined,
+    accessory2: PieceInSet | undefined,
+    accessory3: PieceInSet | undefined,
 }
 
 export type jewel = {
