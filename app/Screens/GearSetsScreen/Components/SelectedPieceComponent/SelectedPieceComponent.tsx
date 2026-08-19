@@ -15,11 +15,10 @@ import { colors } from "../../../../../utills/styles/sharedStyles.styles";
 import ChooseRarenessLabels from "../ChooseRarenessLabels/ChooseRarenessLabels";
 import { convertRawPieceToPieceInSet } from "../../../../../utills/functions/utils.functions";
 import { FullHeightScrollView } from "../../../../../Components/ScrollView/ScrollView";
-import JewelsOfPiece from "../JewelsOfPieceComponent/JewelsOfPieceComponent";
 
 type Props = {
     selectedPiece: PieceInSet,
-    allPiecesArray: Array<RawPiece>,
+    allPiecesByTypeArray: Array<RawPiece>,
     isPiecesLoading: boolean,
     carouselPiecesRareness: rareness,
     onPieceInSetChangeSave: (newPiece: PieceInSet) => void,
@@ -28,7 +27,7 @@ type Props = {
 
 function SelectedPieceComponent({
     selectedPiece, 
-    allPiecesArray, 
+    allPiecesByTypeArray, 
     isPiecesLoading, 
     carouselPiecesRareness, 
     onPieceInSetChangeSave,
@@ -75,7 +74,7 @@ function SelectedPieceComponent({
                         </View>
 
                         <View style = {selected_piece_styles.carousel}>
-                            <ItemsCarousel<RawPiece> itemsArray = {allPiecesArray}  containerStyle = {{flex: 1}}>
+                            <ItemsCarousel<RawPiece> itemsArray = {allPiecesByTypeArray}>
                                 {({item}) =>
                                 <View style = {{flex: 1}}>
                                     <Text style = {{alignSelf: "center", fontWeight: "900"}}>{item.name}</Text>
@@ -100,17 +99,6 @@ function SelectedPieceComponent({
 
                         <View style = {selected_piece_styles.choose_rareness_labels_wrapper}>
                             <ChooseRarenessLabels onChooseRarenessLabelPress = {onChooseRarenessLabelPressHandler}/>
-                        </View>
-
-                        <View>
-                            {/*<View style = {selected_piece_styles.jewels_wrapper}>
-                                    <JewelsOfPiece jewels = {selectedPiece.jewels}/>
-                                </View>
-
-                                <View style = {selected_piece_styles.choose_rareness_labels_wrapper}>
-                                    <ChooseRarenessLabels onChooseRarenessLabelPress = {onChooseRarenessLabelPressHandler}/>
-                                </View>*/
-                            }
                         </View>
 
                         <View style = {selected_piece_styles.save_button}>

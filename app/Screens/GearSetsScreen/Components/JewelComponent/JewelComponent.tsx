@@ -38,7 +38,20 @@ function JewelComponent({jewel, onPress}: Props): React.JSX.Element {
                 <View style = {jewel_component_styles.wrapper}>
                     <ImageBackground source = {{uri: ImgPathConsts.commonPieceBackgroundImage}} 
                         style = {shared_styles.img_in_view}
-                        imageStyle = {{borderRadius: 5}}/>
+                        imageStyle = {{borderRadius: 5}}>
+
+                    <ImageInWrapper 
+                        wrapperStyles = {jewel_component_styles.wrapper}
+                        imageSource = {ImgPathConsts.jewelsPlaceholderImage}
+                        onPress = {() => {
+                            onPress ?
+                            onPress(jewel)
+                            :
+                            1
+                        }}
+                    />
+
+                    </ImageBackground>
                 </View>
             }
         </View>

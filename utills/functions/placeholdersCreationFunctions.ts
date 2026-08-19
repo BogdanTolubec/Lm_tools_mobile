@@ -1,5 +1,20 @@
 import { ImgPathConsts, pieceTypesClient, rareness } from "../enums"
-import { gearSet, jewel, PieceInSet } from "../types"
+import { gearSet, jewel, PieceInSet, stats } from "../types"
+
+const zeroStatsPlaceholder: stats = {
+        armyAtk: 0,
+        armyDeff: 0,
+        armyHp: 0,
+        infantryAtk: 0,
+        infantryDeff: 0,
+        infantryHp: 0,
+        rangedAtk: 0,
+        rangedDeff: 0,
+        rangedHp: 0,
+        cavalryAtk: 0,
+        cavalryDeff: 0,
+        cavalryHp: 0,
+}
 
 const mainHandPlaceholder: PieceInSet = {
     piece_id: 1,
@@ -9,21 +24,9 @@ const mainHandPlaceholder: PieceInSet = {
     tempernessLevel: 0,
     imagePath: ImgPathConsts.mainHandPlaceholderImage,
     jewels: [,,],
-    stats: {
-        armyAtk: 0,
-        armyDeff: 0,
-        armyHp: 0,
-        infantryAtk: 0,
-        infantryDeff: 0,
-        infantryHp: 0,
-        rangedAtk: 0,
-        rangedDeff: 0,
-        rangedHp: 0,
-        cavalryAtk: 0,
-        cavalryDeff: 0,
-        cavalryHp: 0,
-    }
+    stats: zeroStatsPlaceholder,
 }
+
 const helmetPlaceholder: PieceInSet = {
     piece_id: 18,
     name: "placeholder",
@@ -32,21 +35,9 @@ const helmetPlaceholder: PieceInSet = {
     tempernessLevel: 0,
     imagePath: ImgPathConsts.helmetPlaceholderImage,
     jewels: [,,],
-    stats: {
-        armyAtk: 0,
-        armyDeff: 0,
-        armyHp: 0,
-        infantryAtk: 0,
-        infantryDeff: 0,
-        infantryHp: 0,
-        rangedAtk: 0,
-        rangedDeff: 0,
-        rangedHp: 0,
-        cavalryAtk: 0,
-        cavalryDeff: 0,
-        cavalryHp: 0,
-    }
+    stats: zeroStatsPlaceholder,
 }
+
 const platePlaceholder: PieceInSet = {
     piece_id: 32,
     name: "placeholder",
@@ -55,21 +46,9 @@ const platePlaceholder: PieceInSet = {
     tempernessLevel: 0,
     imagePath: ImgPathConsts.platePlaceholderImage,
     jewels: [,,],
-    stats: {
-        armyAtk: 0,
-        armyDeff: 0,
-        armyHp: 0,
-        infantryAtk: 0,
-        infantryDeff: 0,
-        infantryHp: 0,
-        rangedAtk: 0,
-        rangedDeff: 0,
-        rangedHp: 0,
-        cavalryAtk: 0,
-        cavalryDeff: 0,
-        cavalryHp: 0,
-    }
+    stats: zeroStatsPlaceholder
 }
+
 const bootsPlaceholder: PieceInSet = {
     piece_id: 46,
     name: "placeholder",
@@ -78,20 +57,7 @@ const bootsPlaceholder: PieceInSet = {
     tempernessLevel: 0,
     imagePath: ImgPathConsts.bootsPlaceholderImage,
     jewels: [,,],
-    stats: {
-        armyAtk: 0,
-        armyDeff: 0,
-        armyHp: 0,
-        infantryAtk: 0,
-        infantryDeff: 0,
-        infantryHp: 0,
-        rangedAtk: 0,
-        rangedDeff: 0,
-        rangedHp: 0,
-        cavalryAtk: 0,
-        cavalryDeff: 0,
-        cavalryHp: 0,
-    }
+    stats: zeroStatsPlaceholder
 }
 const secondHandPlaceholder: PieceInSet = {
     piece_id: 63,
@@ -101,20 +67,7 @@ const secondHandPlaceholder: PieceInSet = {
     tempernessLevel: 0,
     imagePath: ImgPathConsts.secondHandPlaceholderImage,
     jewels: [,,],
-    stats: {
-        armyAtk: 0,
-        armyDeff: 0,
-        armyHp: 0,
-        infantryAtk: 0,
-        infantryDeff: 0,
-        infantryHp: 0,
-        rangedAtk: 0,
-        rangedDeff: 0,
-        rangedHp: 0,
-        cavalryAtk: 0,
-        cavalryDeff: 0,
-        cavalryHp: 0,
-    }
+    stats: zeroStatsPlaceholder
 }
 const accesorry1Placeholder: PieceInSet = {
     piece_id: 78,
@@ -124,20 +77,7 @@ const accesorry1Placeholder: PieceInSet = {
     tempernessLevel: 0,
     imagePath: ImgPathConsts.accesoryPlaceholderImage,
     jewels: [,,],
-    stats: {
-        armyAtk: 0,
-        armyDeff: 0,
-        armyHp: 0,
-        infantryAtk: 0,
-        infantryDeff: 0,
-        infantryHp: 0,
-        rangedAtk: 0,
-        rangedDeff: 0,
-        rangedHp: 0,
-        cavalryAtk: 0,
-        cavalryDeff: 0,
-        cavalryHp: 0,
-    }
+    stats: zeroStatsPlaceholder
 }
 const accesorry2Placeholder: PieceInSet = {
     piece_id: 78,
@@ -147,20 +87,7 @@ const accesorry2Placeholder: PieceInSet = {
     tempernessLevel: 0,
     imagePath: ImgPathConsts.accesoryPlaceholderImage,
     jewels: [,,],
-    stats: {
-        armyAtk: 0,
-        armyDeff: 0,
-        armyHp: 0,
-        infantryAtk: 0,
-        infantryDeff: 0,
-        infantryHp: 0,
-        rangedAtk: 0,
-        rangedDeff: 0,
-        rangedHp: 0,
-        cavalryAtk: 0,
-        cavalryDeff: 0,
-        cavalryHp: 0,
-    }
+    stats: zeroStatsPlaceholder
 }
 const accesorry3Placeholder: PieceInSet = {
     piece_id: 78,
@@ -170,20 +97,7 @@ const accesorry3Placeholder: PieceInSet = {
     tempernessLevel: 0,
     imagePath: ImgPathConsts.accesoryPlaceholderImage,
     jewels: [,,],
-    stats: {
-        armyAtk: 0,
-        armyDeff: 0,
-        armyHp: 0,
-        infantryAtk: 0,
-        infantryDeff: 0,
-        infantryHp: 0,
-        rangedAtk: 0,
-        rangedDeff: 0,
-        rangedHp: 0,
-        cavalryAtk: 0,
-        cavalryDeff: 0,
-        cavalryHp: 0,
-    }
+    stats: zeroStatsPlaceholder
 }
 
 export function createGearSetPlaceholder(): gearSet {
@@ -220,6 +134,16 @@ export function createPiecePlaceholderByType(type: pieceTypesClient): PieceInSet
         case pieceTypesClient.accessory3: return accesorry3Placeholder
 
         default: return mainHandPlaceholder
+    }
+}
+
+export function createJewelPlaceholderByRareness(rareness: rareness): jewel{
+    return {
+        jewel_id: 1,
+        name: "infantry atk jewel",
+        imagePath: ImgPathConsts.jewelsPlaceholderImage,
+        rareness: rareness,
+        stats: zeroStatsPlaceholder,
     }
 }
 

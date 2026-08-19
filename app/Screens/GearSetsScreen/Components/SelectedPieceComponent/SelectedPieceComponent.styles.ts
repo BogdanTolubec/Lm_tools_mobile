@@ -48,11 +48,6 @@ const selected_piece_styles = StyleSheet.create({
         width: "100%",
     },
 
-    jewels_wrapper: {
-        height: 60,
-        width: "100%"
-    },
-
     linearGradient : {
         ...StyleSheet.absoluteFill,
         backgroundColor: "transparent",

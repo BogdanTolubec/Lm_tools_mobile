@@ -3,6 +3,8 @@ import { StyleSheet } from "react-native";
 
 const items_carousel_styles = StyleSheet.create({
     wrapper: {
+        height: "100%",
+        width: "100%",
         overflow: "hidden",
     },
 
