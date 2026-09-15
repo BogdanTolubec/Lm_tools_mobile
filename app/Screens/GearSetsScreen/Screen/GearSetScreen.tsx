@@ -147,16 +147,27 @@ function GearSetScreen(): React.JSX.Element {
         setCarouselJewelRareness(rareness)
     }
 
-    function onJewelInPiecePressHandler(jewel: (jewel | undefined)){
-        if(jewel) setSelectedJewel(jewel)
+    function onJewelInPiecePressHandler(selectedJewel: (jewel | undefined)){
+        if(selectedJewel) setSelectedJewel(selectedJewel)
     }
 
     function onJewelInCarouselPressHandler(newJewelsInPiece: (jewel | undefined)[]){
-        if(newJewelsInPiece)
-        setSelectedPiece({
-            ...selectedPiece,
-            jewels: newJewelsInPiece,
-        })
+        if(!newJewelsInPiece) return
+        const isJewelsInPieceHasDuplicates = new Set([
+            newJewelsInPiece[0]?.jewel_id, 
+            newJewelsInPiece[1]?.jewel_id,
+            newJewelsInPiece[2]?.jewel_id,
+        ]).size !== newJewelsInPiece.length
+
+        console.log("Is arr has duplicates: " + isJewelsInPieceHasDuplicates + "  Arr: " + JSON.stringify(newJewelsInPiece))
+
+        if(!isJewelsInPieceHasDuplicates)
+        {
+            setSelectedPiece({
+                ...selectedPiece,
+                jewels: newJewelsInPiece,
+            })
+        }
     }
 
 

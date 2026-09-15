@@ -13,7 +13,7 @@ type Props = {
     selectedPieceJewels: (jewel | undefined)[],
     jewelsForCarousel: jewel[],
     onChooseRarenessLabelPressHandler: (rareness: rareness) => void,
-    onJewelInPiecePressHandler: (jewel: (jewel | undefined)) => void,
+    onJewelInPiecePressHandler: (selectedJewel: (jewel | undefined)) => void,
     onJewelInCarouselPresshandler: (newJewelsInPiece: (jewel | undefined)[]) => void,
 }
 
@@ -37,7 +37,6 @@ function JewelsInSelectedPiece(
                     onPress = { (jewel: jewel | undefined) => {
                         setSelectedJewelId(0)
                         onJewelInPiecePressHandler(jewel)
-                        console.log(selectedJewelId)
                     }}
                 />
                 <JewelComponent 
@@ -45,7 +44,6 @@ function JewelsInSelectedPiece(
                     onPress = { (jewel: jewel | undefined) => {
                         setSelectedJewelId(1)
                         onJewelInPiecePressHandler(jewel)
-                        console.log(selectedJewelId)
                     }}
                 />
                 <JewelComponent 
@@ -53,7 +51,6 @@ function JewelsInSelectedPiece(
                     onPress = { (jewel: jewel | undefined) => {
                         setSelectedJewelId(2)
                         onJewelInPiecePressHandler(jewel)
-                        console.log(selectedJewelId)
                     }}
                 />
             </View>
@@ -67,8 +64,9 @@ function JewelsInSelectedPiece(
                             <JewelComponent 
                                 jewel = {item.item} 
                                 onPress = {() => {
-                                    selectedPieceJewels[selectedJewelId] = item.item
-                                    onJewelInCarouselPresshandler(selectedPieceJewels)
+                                    const newSelectedPieceJewels = {...selectedPieceJewels}
+                                    newSelectedPieceJewels[selectedJewelId] = item.item
+                                    onJewelInCarouselPresshandler(newSelectedPieceJewels)
                                 }}/>
                         </View>
                     }

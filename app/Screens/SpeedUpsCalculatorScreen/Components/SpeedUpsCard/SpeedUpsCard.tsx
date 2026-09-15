@@ -40,7 +40,7 @@ function SpeedUpsCard({itemsCount, speedUpValueInMinutes, indexInArray, onCountC
            <View style = {speed_ups_card.second_row}>
 
                 <View style = {speed_ups_card.items_count_wrapper}>
-                    <Text style = {[speed_ups_card.text, {fontSize: typography.fontSize.value}]}>
+                    <Text style = {[speed_ups_card.text, {fontSize: 32}]}>
                         {numbersUpToTrillionReducer(itemsCount)}
                     </Text>
                 </View>
