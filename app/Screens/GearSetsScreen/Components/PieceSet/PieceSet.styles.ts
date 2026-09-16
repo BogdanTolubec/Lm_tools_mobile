@@ -3,6 +3,8 @@ import { StyleSheet } from "react-native";
 const pieces_set_styles = StyleSheet.create({
     wrapper: {
         flex: 1,
+        width: "80%",
+        
         flexDirection: "row",
         gap: 10,
 
@@ -10,8 +12,6 @@ const pieces_set_styles = StyleSheet.create({
 
         paddingVertical: 20,
         paddingHorizontal: 10,
-
-        alignSelf: "flex-start",
     },
 
     column_wrapper: {

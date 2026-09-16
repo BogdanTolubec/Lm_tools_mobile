@@ -40,7 +40,7 @@ function SelectedPieceComponent({
     }, [selectedPiece])
 
     return(
-        <FullHeightScrollView>
+        <View>
             <Surface style = {selected_piece_styles.wrapper}>
                 <LinearGradient colors = {["#1b3453", "#254166", "#1b3453"]} 
                     style = {selected_piece_styles.linearGradient}/>
@@ -111,7 +111,7 @@ function SelectedPieceComponent({
                     </View>
                 }
             </Surface>
-        </FullHeightScrollView>
+        </View>
     );
 }
 

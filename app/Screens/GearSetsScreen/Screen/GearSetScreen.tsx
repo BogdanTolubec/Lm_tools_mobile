@@ -3,7 +3,7 @@ import { ImageBackground, View } from "react-native";
 import gear_set_screen_styles from "./GearSetScreen.styles";
 import shared_styles from "../../../../utills/styles/sharedStyles.styles";
 import { ImgPathConsts, pieceTypesClient, rareness } from "../../../../utills/enums";
-import { createGearSetPlaceholder, createJewelPlaceholderByRareness, createJewelsOfPiecePlaceholder, createPiecePlaceholderByType } from "../../../../utills/functions/placeholdersCreationFunctions";
+import { createGearSetPlaceholder, createJewelPlaceholderByRareness, createPiecePlaceholderByType } from "../../../../utills/functions/placeholdersCreationFunctions";
 import { gearSet, jewel, PieceInSet, RawPiece } from "../../../../utills/types";
 import { getDBConnection, getALLGearSets, getAllPiecesByTypeAndRareness, updatePieceInGearSetByIdAndType, getAllJewelsByRareness } from "../../../../utills/functions/db-service";
 import Loader from "../../../../Components/Loader/Loader";
@@ -24,7 +24,7 @@ function GearSetScreen(): React.JSX.Element {
     //selected objects consts
     const [gearSetSelected, setGearSetSelected] = useState<gearSet>(createGearSetPlaceholder())
     const [selectedPiece, setSelectedPiece] = useState<PieceInSet>(createPiecePlaceholderByType(pieceTypesClient.mainHand))
-    const [selectedJewel, setSelectedJewel] = useState<jewel>(createJewelPlaceholderByRareness(rareness.common))
+    const [selectedJewel, setSelectedJewel] = useState<jewel>(createJewelPlaceholderByRareness(rareness.legendary))
     
     //some pull from db consts
     const [allGearSets, setAllGearsSets] = useState<gearSet[]>([])
@@ -71,6 +71,12 @@ function GearSetScreen(): React.JSX.Element {
                 await getALLGearSets(db).then((data: gearSet[]) => {
                     setAllGearsSets(data)
                     setGearSetSelected(data[0])
+
+                    if(data[0].mainHand) 
+                    {
+                        setSelectedPiece(data[0].mainHand)
+                        setCarouselPiecesRareness(data[0].mainHand.rareness)
+                    }
                 })
             }
             catch(e){
@@ -137,6 +143,7 @@ function GearSetScreen(): React.JSX.Element {
 
     function onPieceInGearSetPressHandler(piece: PieceInSet) {
         setSelectedPiece(piece)
+        setCarouselPiecesRareness(piece.rareness)
     }
 
     function onChoosePiecesRarenessLabelPressHandler(rareness: rareness){
@@ -153,13 +160,14 @@ function GearSetScreen(): React.JSX.Element {
 
     function onJewelInCarouselPressHandler(newJewelsInPiece: (jewel | undefined)[]){
         if(!newJewelsInPiece) return
-        const isJewelsInPieceHasDuplicates = new Set([
+
+        let isJewelsInPieceHasDuplicates = new Set([
             newJewelsInPiece[0]?.jewel_id, 
             newJewelsInPiece[1]?.jewel_id,
             newJewelsInPiece[2]?.jewel_id,
-        ]).size !== newJewelsInPiece.length
+        ]).size !== 3
 
-        console.log("Is arr has duplicates: " + isJewelsInPieceHasDuplicates + "  Arr: " + JSON.stringify(newJewelsInPiece))
+        console.log("Type: " + Object.keys(newJewelsInPiece))
 
         if(!isJewelsInPieceHasDuplicates)
         {
@@ -188,10 +196,11 @@ function GearSetScreen(): React.JSX.Element {
                         <View style = {gear_set_screen_styles.piece_set_and_selected_piece_wrapper}>
                             <View style = {{height: "100%", width: "100%"}}>
                                 <ItemsCarousel<React.JSX.Element>
-                                    itemsArray = {carouselItems}>
+                                    itemsArray = {carouselItems}
+                                    containerStyle = {{height: "100%", width: "100%"}}>
                                     {
                                         ({item}) => 
-                                            <View style = {{height: "100%", width: "80%"}}>
+                                            <View style = {gear_set_screen_styles.carousel_item_wrapper}>
                                                 {item}
                                             </View>
                                     }

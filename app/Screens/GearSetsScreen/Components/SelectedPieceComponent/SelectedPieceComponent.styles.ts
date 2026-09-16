@@ -5,9 +5,17 @@ import { typography } from "../../../../../utills/styles/typography";
 const selected_piece_styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        padding: 5,
+        width: "80%",
 
-        borderRadius: 14,
+        flexDirection: "row",
+        gap: 10,
+
+        borderRadius: 10,
+
+        paddingVertical: 20,
+        paddingHorizontal: 10,
+
+        alignSelf: "flex-start"
     },
 
     content_wrapper: {

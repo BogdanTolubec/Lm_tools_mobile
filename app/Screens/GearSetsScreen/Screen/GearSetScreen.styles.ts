@@ -30,6 +30,14 @@ const gear_set_screen_styles = StyleSheet.create({
             width: "100%",
             alignContent: "center",
         },
+
+        carousel_item_wrapper: {
+            height: "100%",
+            width: "100%",
+
+            justifyContent: "center",
+            alignItems: "center",
+        }
     }
 )
 
